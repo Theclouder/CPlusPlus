@@ -6,7 +6,7 @@
 #    By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 10:03:28 by vduchi            #+#    #+#              #
-#    Updated: 2023/09/10 12:24:28 by vduchi           ###   ########.fr        #
+#    Updated: 2023/09/10 17:40:26 by vduchi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ MID_GRAY		=	\033[38;5;245m
 DARK_GREEN		=	\033[38;2;75;179;82
 DARK_YELLOW		=	\033[38;5;143m
 
-NAME		=	ClapTrap
+NAME		=	DiamondTrap
 
 SRCS_DIR	=	src
 INCS_DIR	=	inc
@@ -41,6 +41,9 @@ DEPS_DIR	=	.deps
 
 SRCS		=			src/main.cpp
 SRCS		+=		src/ClapTrap.cpp
+SRCS		+=		src/ScavTrap.cpp
+SRCS		+=		src/FragTrap.cpp
+SRCS		+=		src/DiamondTrap.cpp
 OBJS		=	$(patsubst $(SRCS_DIR)/%, $(OBJS_DIR)/%, $(SRCS:.cpp=.o))
 
 CPPFLAGS	+=	-Wall -Werror -Wextra -std=c++98 -pedantic-errors $(addprefix -I , $(INCS_DIR))

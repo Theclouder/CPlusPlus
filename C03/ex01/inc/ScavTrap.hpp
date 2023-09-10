@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/08 16:55:31 by vduchi            #+#    #+#             */
-/*   Updated: 2023/09/10 12:09:07 by vduchi           ###   ########.fr       */
+/*   Created: 2023/09/08 16:42:14 by vduchi            #+#    #+#             */
+/*   Updated: 2023/09/10 18:13:16 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef SCAVTRAP_H__
+#define SCAVTRAP_H__
+
+#include <iostream>
 #include "ClapTrap.hpp"
 
-int main(void)
+class ScavTrap : public ClapTrap
 {
-	ClapTrap one("one");
-	ClapTrap two("two");
-	ClapTrap three("three");
+public:
+	ScavTrap(void);
+	ScavTrap(std::string name);
+	ScavTrap(const ScavTrap &cpy);
+	ScavTrap &operator=(const ScavTrap &cpy);
+	~ScavTrap(void);
 
-	one.attack("two");
-	two.attack("three");
-	three.attack("one");
+	void guardGate(void);
+	void attack(const std::string &target);
+};
 
-	one.takeDamage(2);
-	two.takeDamage(3);
-	three.takeDamage(5);
-
-	one.beRepaired(1);
-	two.beRepaired(2);
-	three.beRepaired(2);
-}
+#endif

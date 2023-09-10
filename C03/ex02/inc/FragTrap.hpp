@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/08 16:55:31 by vduchi            #+#    #+#             */
-/*   Updated: 2023/09/10 12:09:07 by vduchi           ###   ########.fr       */
+/*   Created: 2023/09/08 16:42:14 by vduchi            #+#    #+#             */
+/*   Updated: 2023/09/10 18:27:39 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FRAGTRAP_H__
+#define FRAGTRAP_H__
+
+#include <iostream>
 #include "ClapTrap.hpp"
 
-int main(void)
+class FragTrap : public ClapTrap
 {
-	ClapTrap one("one");
-	ClapTrap two("two");
-	ClapTrap three("three");
+public:
+	FragTrap(void);
+	FragTrap(std::string name);
+	FragTrap(const FragTrap &cpy);
+	FragTrap &operator=(const FragTrap &cpy);
+	~FragTrap(void);
 
-	one.attack("two");
-	two.attack("three");
-	three.attack("one");
+	void highFiveGuys(void);
+	void attack(const std::string &target);
+};
 
-	one.takeDamage(2);
-	two.takeDamage(3);
-	three.takeDamage(5);
-
-	one.beRepaired(1);
-	two.beRepaired(2);
-	three.beRepaired(2);
-}
+#endif
