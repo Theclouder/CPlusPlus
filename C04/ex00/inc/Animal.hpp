@@ -1,30 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/28 10:20:52 by vduchi            #+#    #+#             */
-/*   Updated: 2023/09/15 18:24:23 by vduchi           ###   ########.fr       */
+/*   Created: 2023/09/08 16:42:14 by vduchi            #+#    #+#             */
+/*   Updated: 2023/09/15 19:47:52 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cctype>
-#include <cstring>
+#ifndef ANIMAL_H__
+#define ANIMAL_H__
+
 #include <iostream>
 
-int	main(int argc, char *argv[])
+class Animal
 {
-	if (argc == 1)
-	{
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-		return (0);
-	}
-	for (int i = 1; i < argc; i++)
-	{
-		for (size_t l = 0; l < std::strlen(argv[i]); l++)
-			std::cout << (char)std::toupper(argv[i][l]);
-	}
-	std::cout << std::endl;
-}
+
+public:
+	Animal(void);
+	Animal(std::string type);
+	Animal(const Animal &cpy);
+	~Animal(void);
+	Animal &operator=(const Animal &cpy);
+
+	void setType(std::string type);
+	std::string getType() const;
+	virtual void makeSound() const;
+
+protected:
+	std::string _type;
+};
+
+#endif
+

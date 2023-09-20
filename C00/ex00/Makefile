@@ -6,7 +6,7 @@
 #    By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 10:03:28 by vduchi            #+#    #+#              #
-#    Updated: 2023/08/30 16:13:11 by vduchi           ###   ########.fr        #
+#    Updated: 2023/09/15 18:24:44 by vduchi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ OBJS		=	$(SRCS:.cpp=.o)
 
 CPPFLAGS	+=	-Wall -Werror -Wextra -std=c++98 -pedantic-errors
 
+CXX		=	c++
 RM			=	rm -rf
 MAKE		=	make --no-print-directory
 

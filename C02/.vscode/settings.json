@@ -1,8 +1,0 @@
-{
-	"files.associations": {
-		"*.js": "javascriptreact",
-		"*.hbs": "handlebars",
-		"*.c": "c",
-		"bitset": "cpp"
-	}
-}
