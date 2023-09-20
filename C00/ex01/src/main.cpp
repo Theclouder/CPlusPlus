@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 09:54:24 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/31 13:33:42 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/09/20 10:22:25 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,12 @@ void	searchContact(PhoneBook &phoneBook)
 		return;
 	}
 	toShow = phoneBook.getContact(index - 1);
-	std::cout << std::setw(20) << "First Name" << "|" << std::setw(20) << "Last Name" 
-		<< "|" << std::setw(20) << "Nick Name" << "|" << std::setw(20) << "Phone Num"
-		<< "| " << "Darkest Secret" << std::endl;
+	std::cout << std::setw(20) << "First Name"
+						<< "|" << std::setw(20) << "Last Name"
+						<< "|" << std::setw(20) << "Nick Name"
+						<< "|" << std::setw(20) << "Phone Num"
+						<< "| "
+						<< "Darkest Secret" << std::endl;
 	std::cout << std::setw(20) << cutStr(toShow->getFirstName(), 20) << "|" << std::setw(20)
 		<< cutStr(toShow->getLastName(), 20) << "|" << std::setw(20) << cutStr(toShow->getNickName(), 20)
 		<< "|" << std::setw(20) << cutStr(toShow->getPhoneNumber(), 20) << "| " << toShow->getDarkestSecret()
@@ -65,7 +68,17 @@ void	searchContact(PhoneBook &phoneBook)
 
 }
 
-void	addContact(PhoneBook &phoneBook)
+int takeValue(std::string &ref, std::string value)
+{
+	std::cout << std::endl
+						<< "Enter the " << value << ": ";
+	std::getline(std::cin, ref);
+	if (std::cin.eof() == 1)
+		return 1;
+	return 0;
+}
+
+int addContact(PhoneBook &phoneBook)
 {
 	std::string	first;
 	std::string	last;
@@ -74,16 +87,8 @@ void	addContact(PhoneBook &phoneBook)
 	std::string	secret;
 	Contact	newContact(phoneBook.getIndex() + 1);
 
-	std::cout << std::endl << "Enter the first name: ";
-	std::getline(std::cin, first);
-	std::cout << "Enter the last name: ";
-	std::getline(std::cin, last);
-	std::cout << "Enter a nick name: ";
-	std::getline(std::cin, nick);
-	std::cout << "Enter a phone number: ";
-	std::getline(std::cin, phone);
-	std::cout << "Enter the darkest secret: ";
-	std::getline(std::cin, secret);
+	if (takeValue(first, "first name") || takeValue(last, "last name") || takeValue(nick, "nickname") || takeValue(phone, "phone number") || takeValue(secret, "darkest secret"))
+		return 1;
 	newContact.setFirstName(first);
 	newContact.setLastName(last);
 	newContact.setNickName(nick);
@@ -91,6 +96,7 @@ void	addContact(PhoneBook &phoneBook)
 	newContact.setDarkestSecret(secret);
 	phoneBook.addNewContact(newContact);
 	std::cout << "Contact added successfully!" << std::endl << std::endl;
+	return 0;
 }
 
 int	main(void)
@@ -103,10 +109,7 @@ int	main(void)
 		std::cout << "Enter a command: ";
 		std::getline(std::cin, line);
 		if (std::cin.eof() == 1)
-		{
-			std::cout << "Ctrl d pressed!" << std::endl;
 			return 0;
-		}
 		if (line.compare("ADD") && line.compare("SEARCH") && line.compare("EXIT"))
 		{
 			std::cout << std::endl << "Command: " << line << " not allowed!" << std::endl;
@@ -114,7 +117,10 @@ int	main(void)
 			continue;
 		}
 		if (!line.compare("ADD"))
-			addContact(phoneBook);
+		{
+			if (addContact(phoneBook))
+				return 1;
+		}
 		else if (!line.compare("SEARCH"))
 			searchContact(phoneBook);
 		else
