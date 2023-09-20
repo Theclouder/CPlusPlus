@@ -6,7 +6,7 @@
 #    By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 10:03:28 by vduchi            #+#    #+#              #
-#    Updated: 2023/09/15 18:26:29 by vduchi           ###   ########.fr        #
+#    Updated: 2023/09/20 10:31:58 by vduchi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ MID_GRAY		=	\033[38;5;245m
 DARK_GREEN		=	\033[38;2;75;179;82m
 DARK_YELLOW		=	\033[38;5;143m
 
-NAME		=	phonebook
+NAME		=	jobOfMyDream
 
 SRCS		=	tests.cpp
 SRCS		+=	Account.cpp
@@ -59,6 +59,7 @@ clean	:
 
 fclean	:	clean
 	@$(RM) $(NAME)
+	@echo "$(BLUE)Project cleaned!$(DEF_COLOR)"
 
 re		:	fclean all
 

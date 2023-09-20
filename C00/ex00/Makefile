@@ -6,7 +6,7 @@
 #    By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 10:03:28 by vduchi            #+#    #+#              #
-#    Updated: 2023/09/15 18:24:44 by vduchi           ###   ########.fr        #
+#    Updated: 2023/09/20 10:31:10 by vduchi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,6 +58,7 @@ clean	:
 
 fclean	:	clean
 	@$(RM) $(NAME)
+	@echo "$(BLUE)Project cleaned!$(DEF_COLOR)"
 
 re		:	fclean all
 
