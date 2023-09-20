@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 13:45:25 by vduchi            #+#    #+#             */
-/*   Updated: 2023/09/03 16:13:43 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/09/20 12:54:40 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ void Account::_displayTimestamp(void)
 {
 	std::time_t t = std::time(0); // get time now
 	std::tm *now = std::localtime(&t);
-	std::cout << "[" << (now->tm_year + 1900) << "0" << (now->tm_mon
-		+ 1) << "0" << now->tm_mday << "_" << now->tm_hour << now->tm_min << now->tm_sec << "]"
-				<< " ";
+	std::cout << "[" << (now->tm_year + 1900) << (now->tm_mon < 9 ? "0" : "") << (now->tm_mon
+		+ 1) << (now->tm_mday < 10 ? "0" : "") << now->tm_mday << "_"
+		<< (now->tm_hour < 10 ? "0" : "") << now->tm_hour 
+		<< (now->tm_min < 10 ? "0" : "") << now->tm_min << now->tm_sec << "]" << " ";
 }
 
 void Account::_print_func(const Account &obj, int mode)
@@ -115,3 +116,8 @@ void Account::displayStatus(void) const
 {
 	Account::_print_func(*this, 1);
 }
+
+int Account::getNbAccounts(void) { return (_nbAccounts); }
+int Account::getTotalAmount(void) { return (_totalAmount); }
+int Account::getNbDeposits(void) { return (_totalNbDeposits); }
+int Account::getNbWithdrawals(void) { return (_totalNbWithdrawals); }

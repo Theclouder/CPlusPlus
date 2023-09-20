@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 09:54:24 by vduchi            #+#    #+#             */
-/*   Updated: 2023/09/20 10:22:25 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/09/20 12:46:04 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	searchContact(PhoneBook &phoneBook)
 	}
 	std::cout << "Enter a contact index: ";
 	std::getline(std::cin, line);
-	if (line.length() > 1)
+	if (line.length() > 1 || line[0] < '1' || line[0] > '8')
 	{
 		std::cout << "Index not valid!" << std::endl << std::endl;
 		return;

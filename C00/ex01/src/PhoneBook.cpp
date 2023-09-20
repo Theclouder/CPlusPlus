@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 16:27:43 by vduchi            #+#    #+#             */
-/*   Updated: 2023/08/31 13:12:36 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/09/20 12:46:19 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void PhoneBook::addNewContact (Contact &newContact) {
 	_contactArray[this->_index % 8].setPhoneNumber(newContact.getPhoneNumber());
 	_contactArray[this->_index % 8].setDarkestSecret(newContact.getDarkestSecret());
 	this->_index++;
-	if (this->_stored < 7)
+	if (this->_stored < 8)
 		this->_stored++;
 }
 
