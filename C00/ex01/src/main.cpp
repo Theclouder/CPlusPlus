@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 09:54:24 by vduchi            #+#    #+#             */
-/*   Updated: 2023/09/20 12:46:04 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/09/21 20:04:51 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,11 @@ int takeValue(std::string &ref, std::string value)
 	std::cout << std::endl
 						<< "Enter the " << value << ": ";
 	std::getline(std::cin, ref);
+	if (ref.length() == 0)
+	{
+		std::cout << "Enter a value, empty filed not permitted!" << std::endl;
+		takeValue(ref, value);
+	}
 	if (std::cin.eof() == 1)
 		return 1;
 	return 0;

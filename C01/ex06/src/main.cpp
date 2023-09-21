@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 12:37:59 by vduchi            #+#    #+#             */
-/*   Updated: 2023/09/05 09:44:11 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/09/21 20:22:16 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,4 @@ int main(int argc, char *argv[])
 		return (0);
 	}
 	harl.complain(argv[1]);
-	// std::cout << std::endl;
-	// harl.complain("test");
-	// std::cout << std::endl;
-	// harl.complain("Info");
-	// std::cout << std::endl;
-	// harl.complain("INFO");
-	// std::cout << std::endl;
-	// harl.complain("Warning");
-	// std::cout << std::endl;
-	// harl.complain("WARNING");
-	// std::cout << std::endl;
-	// harl.complain("ERROR");
 }
