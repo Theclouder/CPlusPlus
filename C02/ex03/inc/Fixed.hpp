@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 12:13:04 by vduchi            #+#    #+#             */
-/*   Updated: 2023/09/08 15:40:41 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/09/22 18:02:42 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ public:
 	int operator<(const Fixed &other);
 	int operator>=(const Fixed &other);
 	int operator<=(const Fixed &other);
-	Fixed operator+(const Fixed &other);
-	Fixed operator-(const Fixed &other);
-	Fixed operator*(const Fixed &other);
-	Fixed operator/(const Fixed &other);
+	Fixed operator+(const Fixed &other) const;
+	Fixed operator-(const Fixed &other) const;
+	Fixed operator*(const Fixed &other) const;
+	Fixed operator/(const Fixed &other) const;
 	Fixed &operator++();
 	Fixed &operator--();
 	Fixed operator++(int);

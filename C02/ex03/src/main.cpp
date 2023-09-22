@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 12:24:49 by vduchi            #+#    #+#             */
-/*   Updated: 2023/09/08 16:02:33 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/09/22 18:35:12 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,54 @@
 
 int main(void)
 {
-	Fixed a;
-	Fixed const b(Fixed(5.05f) * Fixed(2));
-	Fixed const c(Fixed(5.05f) / Fixed(2));
-	Fixed const d(Fixed(5.05f) + Fixed(2));
+	std::cout << "Inside Triangle -> should print 1" << std::endl;
+	{
+		Point a(1.0f, 0.0f);
+		Point b(2.0f, 1.0f);
+		Point c(3.0f, 0.0f);
+		Point point(2.0f, 0.5f);
+		std::cout << bsp(a, b, c, point) << std::endl;
+	}
 
-	std::cout << a << std::endl;
-	std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
+	std::cout << std::endl
+						<< "Outside Triangle -> should print 0" << std::endl;
+	{
+		Point a(1.0f, 0.0f);
+		Point b(2.0f, 1.0f);
+		Point c(3.0f, 0.0f);
+		Point point(2.0f, 3.0f);
+		std::cout << bsp(a, b, c, point) << std::endl;
+	}
 
-	std::cout << "B: " << b << std::endl;
-	std::cout << "C: " << c << std::endl;
-	std::cout << "D: " << d << std::endl;
+	std::cout << std::endl
+						<< "In a line -> should print 0" << std::endl;
+	{
+		Point a(1.0f, 0.0f);
+		Point b(2.0f, 0.0f);
+		Point c(3.0f, 0.0f);
+		Point point(4.0f, 0.0f);
+		std::cout << bsp(a, b, c, point) << std::endl;
+	}
 
-	std::cout << "Max D B: " << Fixed::max(d, b) << std::endl;
-	std::cout << "Max D C: " << Fixed::max(d, c) << std::endl;
-	std::cout << "Max B C: " << Fixed::max(b, c) << std::endl;
-	std::cout << "Min D B: " << Fixed::min(d, b) << std::endl;
-	std::cout << "Min D C: " << Fixed::min(d, c) << std::endl;
-	std::cout << "Min B C: " << Fixed::min(b, c) << std::endl;
+	std::cout << std::endl
+						<< "Vertices of triangle -> should print 0" << std::endl;
+	{
+		Point a(1.0f, 0.0f);
+		Point b(2.0f, 1.0f);
+		Point c(3.0f, 0.0f);
+		Point point(3.0f, 0.0f);
+		std::cout << bsp(a, b, c, point) << std::endl;
+	}
 
-	return 0;
+	std::cout << std::endl
+						<< "On a egde of triangle -> should print 0" << std::endl;
+	{
+		Point a(1.0f, 0.0f);
+		Point b(3.0f, 0.0f);
+		Point c(2.0f, 1.0f);
+		Point point(2.0f, 0.0f);
+		std::cout << bsp(a, b, c, point) << std::endl;
+	}
+
+	return (0);
 }

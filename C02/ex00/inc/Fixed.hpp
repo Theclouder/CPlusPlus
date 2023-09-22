@@ -6,12 +6,13 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 12:13:04 by vduchi            #+#    #+#             */
-/*   Updated: 2023/09/05 12:28:24 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/09/22 10:40:12 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FIXED_H__
 #define FIXED_H__
+
 #include <iostream>
 
 class Fixed
@@ -27,9 +28,7 @@ public:
 
 private:
 	int _value;
-	static int bits;
+	const static int _bits;
 };
-
-static int bits = 8;
 
 #endif

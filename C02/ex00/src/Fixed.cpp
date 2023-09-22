@@ -6,11 +6,13 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 12:19:44 by vduchi            #+#    #+#             */
-/*   Updated: 2023/09/06 18:12:40 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/09/22 10:49:21 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+
+const int Fixed::_bits = 8;
 
 Fixed::Fixed(void)
 {
@@ -25,8 +27,8 @@ Fixed::~Fixed(void)
 
 Fixed::Fixed(Fixed &cpy)
 {
-	this->setRawBits(cpy.getRawBits());
 	std::cout << "Copy constructor called!" << std::endl;
+	*this = cpy;
 }
 
 Fixed &Fixed::operator=(const Fixed &cpy)

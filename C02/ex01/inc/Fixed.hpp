@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 12:13:04 by vduchi            #+#    #+#             */
-/*   Updated: 2023/09/06 18:48:09 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/09/22 10:41:36 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ public:
 
 private:
 	int _value;
-	const static int _bits = 8;
+	const static int _bits;
 };
 
 std::ostream &operator<<(std::ostream &s, const Fixed &cpy);
