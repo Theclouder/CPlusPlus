@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:42:14 by vduchi            #+#    #+#             */
-/*   Updated: 2023/09/10 18:17:47 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/09/22 20:46:08 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 #define CLAPTRAP_H__
 
 #include <iostream>
+
+#define CLAP_HEALTH_DEF 10
+#define CLAP_ENERGY_DEF 10
+#define CLAP_DAMAGE_DEF 0
 
 class ClapTrap
 {
@@ -28,7 +32,7 @@ public:
 	int getHealth(void) const;
 	int getEnergy(void) const;
 	int getDamage(void) const;
-	std::string getName(void);
+	std::string getName(void) const;
 
 	void setName(std::string name);
 	void setHealth(int newValue);
@@ -45,5 +49,7 @@ private:
 	int _AD;
 	std::string _name;
 };
+
+void print_message(ClapTrap &inst, int idx, const std::string &target, int amount);
 
 #endif

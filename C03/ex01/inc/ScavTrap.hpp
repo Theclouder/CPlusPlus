@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:42:14 by vduchi            #+#    #+#             */
-/*   Updated: 2023/09/10 18:13:16 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/09/22 20:47:24 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 #include <iostream>
 #include "ClapTrap.hpp"
+
+#define SCAV_HEALTH_DEF 100
+#define SCAV_ENERGY_DEF 50
+#define SCAV_DAMAGE_DEF 20
 
 class ScavTrap : public ClapTrap
 {

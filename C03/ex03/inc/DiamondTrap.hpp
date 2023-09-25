@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:42:14 by vduchi            #+#    #+#             */
-/*   Updated: 2023/09/10 18:37:11 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/09/25 10:08:25 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,15 @@ public:
 
 	void whoAmI(void);
 	void attack(const std::string &target);
+	void setName(std::string name);
+	std::string getName(void) const;
+	void setClapTrapName(std::string name);
+	std::string getClapTrapName(void) const;
 
 private:
 	std::string _name;
 };
+
+std::ostream &operator<<(std::ostream &out, DiamondTrap &diamond);
 
 #endif
