@@ -49,7 +49,7 @@ OBJS		=	$(patsubst $(SRCS_DIR)/%, $(OBJS_DIR)/%, $(SRCS:.cpp=.o))
 CPPFLAGS	+=	-Wall -Werror -Wextra -std=c++98 -pedantic-errors $(addprefix -I , $(INCS_DIR))
 CPPFLAGS	+=	-MMD -MP -MF $(DEPS_DIR)/$*.d
 
-CXX		=	g++
+CXX		=	c++
 RM			=	rm -rf
 MKDIR		=	mkdir -p
 MAKE		=	make --no-print-directory
