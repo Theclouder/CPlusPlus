@@ -6,7 +6,7 @@
 #    By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 10:03:28 by vduchi            #+#    #+#              #
-#    Updated: 2023/09/15 19:37:36 by vduchi           ###   ########.fr        #
+#    Updated: 2023/10/16 18:12:52 by vduchi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,8 +42,8 @@ DEPS_DIR	=	.deps
 SRCS		=		src/main.cpp
 SRCS		+=		src/Dog.cpp
 SRCS		+=		src/Cat.cpp
-SRCS		+=		src/WrongCat.cpp
 SRCS		+=		src/Animal.cpp
+SRCS		+=		src/WrongCat.cpp
 SRCS		+=		src/WrongAnimal.cpp
 OBJS		=	$(patsubst $(SRCS_DIR)/%, $(OBJS_DIR)/%, $(SRCS:.cpp=.o))
 

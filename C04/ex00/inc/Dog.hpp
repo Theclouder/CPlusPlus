@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:42:14 by vduchi            #+#    #+#             */
-/*   Updated: 2023/09/15 19:44:23 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/10/16 18:32:09 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ class Dog : public Animal
 
 public:
 	Dog(void);
-	Dog(const Dog &cpy);
+	Dog(const Dog &);
 	~Dog(void);
-	Dog &operator=(const Dog &cpy);
+	Dog &operator=(const Dog &);
 
 	void makeSound() const;
 };

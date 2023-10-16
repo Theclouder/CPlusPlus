@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:42:14 by vduchi            #+#    #+#             */
-/*   Updated: 2023/09/15 19:47:52 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/10/16 18:31:44 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ class Animal
 
 public:
 	Animal(void);
-	Animal(std::string type);
-	Animal(const Animal &cpy);
+	Animal(std::string);
+	Animal(const Animal &);
 	~Animal(void);
-	Animal &operator=(const Animal &cpy);
+	Animal &operator=(const Animal &);
 
-	void setType(std::string type);
+	void setType(std::string);
 	std::string getType() const;
 	virtual void makeSound() const;
 
