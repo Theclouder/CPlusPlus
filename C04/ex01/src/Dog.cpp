@@ -11,19 +11,50 @@
 /* ************************************************************************** */
 
 #include "Dog.hpp"
+#include "Brain.hpp"
 
-Dog::Dog(void) : Animal("Dog") { std::cout << "Dog default constructor called" << std::endl; }
+Dog::Dog(void) : Animal("Dog")
+{
+	this->brain = new Brain();
+	std::cout << "Dog default constructor called" << std::endl;
+}
 
-Dog::Dog(const Dog &cpy) : Animal(cpy) { std::cout << "Dog copy constructor called" << std::endl; }
+Dog::Dog(const Dog &cpy) : Animal(cpy)
+{
+	*this = cpy;
+	std::cout << "Dog copy constructor called" << std::endl;
+}
 
 Dog::~Dog(void) { std::cout << "Dog destructor called" << std::endl; }
 
-Dog	&Dog::operator=(const Dog &cpy)
+Dog &Dog::operator=(const Dog &cpy)
 {
 	this->setType(cpy.getType());
+	for (int i = 0; i < 100; i++)
+		this->setIdeas(cpy.getIdeas(i), i);
 	std::cout << "Dog assignment operator called" << std::endl;
 	return *this;
 }
 
 void Dog::makeSound() const { std::cout << "Bark!" << std::endl; }
+
+void Dog::setIdeas(std::string newIdea)
+{
+	this->brain->setIdeas(newIdea);
+}
+
+void Dog::setIdeas(std::string newIdea, int idx)
+{
+	this->brain->setIdeas(newIdea, idx);
+}
+
+std::string *Dog::getIdeas() const
+{
+	return this->brain->getIdeas();
+}
+
+std::string &Dog::getIdeas(int idx) const
+{
+	return this->brain->getIdeas(idx);
+}
 

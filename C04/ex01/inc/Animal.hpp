@@ -28,6 +28,8 @@ public:
 	void setType(std::string type);
 	std::string getType() const;
 	virtual void makeSound() const;
+	virtual void setIdeas(std::string) = 0;
+	virtual std::string *getIdeas(void) = 0;
 
 protected:
 	std::string _type;
