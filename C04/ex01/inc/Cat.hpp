@@ -28,6 +28,9 @@ public:
 
 	void makeSound() const;
 	void setIdeas(std::string);
+	void setIdeas(std::string, int);
+	std::string *getIdeas() const;
+	std::string &getIdeas(int) const;
 
 private:
 	Brain *brain;

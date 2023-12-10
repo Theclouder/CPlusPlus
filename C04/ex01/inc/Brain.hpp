@@ -20,9 +20,13 @@ class Brain
 
 public:
 	Brain(void);
-	Brain(const Brain &cpy);
+	Brain(const Brain &);
 	~Brain(void);
-	Brain &operator=(const Brain &cpy);
+	Brain &operator=(const Brain &);
+	void setIdeas(std::string);
+	void setIdeas(std::string, int);
+	std::string *getIdeas() const;
+	std::string &getIdeas(int) const;
 
 protected:
 	std::string ideas[100];

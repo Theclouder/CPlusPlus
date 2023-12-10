@@ -29,3 +29,25 @@ Brain &Brain::operator=(const Brain &cpy)
 	std::cout << "Brain assignment operator called" << std::endl;
 	return *this;
 }
+
+void	Brain::setIdeas(std::string newIdea)
+{
+	for (int i = 0; i < 100; i++)
+		this->ideas[i] = newIdea;
+}
+
+void	Brain::setIdeas(std::string newIdea, int idx)
+{
+	this->ideas[idx] = newIdea;
+}
+
+std::string *Brain::getIdeas() const
+{
+	return this->ideas;
+}
+
+std::string &Brain::getIdeas(int idx) const
+{
+	return this->ideas[idx];
+}
+
