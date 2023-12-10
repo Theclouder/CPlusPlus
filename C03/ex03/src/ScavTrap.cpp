@@ -6,16 +6,31 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:45:30 by vduchi            #+#    #+#             */
-/*   Updated: 2023/09/25 11:28:23 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/12/10 13:24:25 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(void) : ClapTrap("NoName", SCAV_HEALTH_DEF, SCAV_ENERGY_DEF, SCAV_DAMAGE_DEF) { std::cout << "ScavTrap created!" << std::endl; }
-ScavTrap::~ScavTrap(void) { std::cout << "ScavTrap " << this->getName() << " destroyed!" << std::endl; }
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name, SCAV_HEALTH_DEF, SCAV_ENERGY_DEF, SCAV_DAMAGE_DEF) { std::cout << "ScavTrap " << this->getName() << " created!" << std::endl; }
-ScavTrap::ScavTrap(const ScavTrap &cpy) : ClapTrap(cpy) { std::cout << "ScavTrap copy assignment called!" << std::endl; }
+ScavTrap::ScavTrap(void) : ClapTrap("NoName", SCAV_HEALTH_DEF, SCAV_ENERGY_DEF, SCAV_DAMAGE_DEF)
+{
+	std::cout << "ScavTrap created!" << std::endl;
+}
+
+ScavTrap::~ScavTrap(void)
+{
+	std::cout << "ScavTrap " << this->getName() << " destroyed!" << std::endl;
+}
+
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name, SCAV_HEALTH_DEF, SCAV_ENERGY_DEF, SCAV_DAMAGE_DEF)
+{
+	std::cout << "ScavTrap " << this->getName() << " created!" << std::endl;
+}
+
+ScavTrap::ScavTrap(const ScavTrap &cpy) : ClapTrap(cpy)
+{
+	std::cout << "ScavTrap copy assignment called!" << std::endl;
+}
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &cpy)
 {

@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:45:30 by vduchi            #+#    #+#             */
-/*   Updated: 2023/09/22 20:46:55 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/12/10 13:19:20 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ ClapTrap::ClapTrap(void)
 	this->setDamage(CLAP_DAMAGE_DEF);
 	std::cout << "ClapTrap NoName created!" << std::endl;
 }
+
 ClapTrap::ClapTrap(std::string name)
 {
 	this->setName(name);
@@ -29,6 +30,7 @@ ClapTrap::ClapTrap(std::string name)
 	this->setDamage(CLAP_DAMAGE_DEF);
 	std::cout << "ClapTrap " << name << " created!" << std::endl;
 }
+
 ClapTrap::ClapTrap(std::string name, int HP, int EP, int AD) : _HP(HP), _EP(EP), _AD(AD), _name(name)
 {
 	this->setName(name);
@@ -37,12 +39,17 @@ ClapTrap::ClapTrap(std::string name, int HP, int EP, int AD) : _HP(HP), _EP(EP),
 	this->setDamage(AD);
 	std::cout << "ClapTrap " << name << " with params created!" << std::endl;
 }
+
 ClapTrap::ClapTrap(const ClapTrap &cpy)
 {
 	*this = cpy;
 	std::cout << "ClapTrap copy constructor called!" << std::endl;
 }
-ClapTrap::~ClapTrap(void) { std::cout << "ClapTrap " << this->_name << " destroyed!" << std::endl; }
+
+ClapTrap::~ClapTrap(void)
+{
+	std::cout << "ClapTrap " << this->_name << " destroyed!" << std::endl;
+}
 
 //	Getters
 int ClapTrap::getHealth(void) const { return this->_HP; }

@@ -6,12 +6,12 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:42:14 by vduchi            #+#    #+#             */
-/*   Updated: 2023/09/22 20:46:08 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/12/10 13:22:19 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLAPTRAP_H__
-#define CLAPTRAP_H__
+#ifndef CLAPTRAP_HPP
+#define CLAPTRAP_HPP
 
 #include <iostream>
 
@@ -21,27 +21,28 @@
 
 class ClapTrap
 {
+
 public:
 	ClapTrap(void);
-	ClapTrap(std::string name);
-	ClapTrap(std::string name, int HP, int EP, int AD);
-	ClapTrap(const ClapTrap &cpy);
+	ClapTrap(std::string);
+	ClapTrap(std::string, int, int, int);
+	ClapTrap(const ClapTrap &);
 	~ClapTrap(void);
-	ClapTrap &operator=(const ClapTrap &cpy);
+	ClapTrap &operator=(const ClapTrap &);
 
 	int getHealth(void) const;
 	int getEnergy(void) const;
 	int getDamage(void) const;
 	std::string getName(void) const;
 
-	void setName(std::string name);
-	void setHealth(int newValue);
-	void setEnergy(int newValue);
-	void setDamage(int newValue);
+	void setName(std::string);
+	void setHealth(int);
+	void setEnergy(int);
+	void setDamage(int);
 
-	void attack(const std::string &target);
-	void takeDamage(unsigned int amount);
-	void beRepaired(unsigned int amount);
+	void attack(const std::string &);
+	void takeDamage(unsigned int);
+	void beRepaired(unsigned int);
 
 private:
 	int _HP;
@@ -50,6 +51,6 @@ private:
 	std::string _name;
 };
 
-void print_message(ClapTrap &inst, int idx, const std::string &target, int amount);
+void print_message(ClapTrap &, int, const std::string &, int);
 
 #endif

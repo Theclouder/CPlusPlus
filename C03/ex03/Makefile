@@ -6,7 +6,7 @@
 #    By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 10:03:28 by vduchi            #+#    #+#              #
-#    Updated: 2023/10/16 17:56:07 by vduchi           ###   ########.fr        #
+#    Updated: 2023/12/10 13:28:54 by vduchi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,23 +39,23 @@ INCS_DIR	=	inc
 OBJS_DIR	=	.objs
 DEPS_DIR	=	.deps
 
-SRCS		=			src/main.cpp
+SRCS		=		src/main.cpp
 SRCS		+=		src/ClapTrap.cpp
 SRCS		+=		src/ScavTrap.cpp
 SRCS		+=		src/FragTrap.cpp
 SRCS		+=		src/DiamondTrap.cpp
-OBJS		=	$(patsubst $(SRCS_DIR)/%, $(OBJS_DIR)/%, $(SRCS:.cpp=.o))
+OBJS		=		$(patsubst $(SRCS_DIR)/%, $(OBJS_DIR)/%, $(SRCS:.cpp=.o))
 
 CPPFLAGS	+=	-Wall -Werror -Wextra -std=c++98 -pedantic-errors $(addprefix -I , $(INCS_DIR))
 CPPFLAGS	+=	-MMD -MP -MF $(DEPS_DIR)/$*.d
 
-CXX		=	g++
+CXX			=	g++
 RM			=	rm -rf
 MKDIR		=	mkdir -p
 MAKE		=	make --no-print-directory
 
 $(OBJS_DIR)/%.o		:	$(SRCS_DIR)/%.cpp
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
+	@$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
 	@echo "$(YELLOW)$(patsubst $(SRCS_DIR)/%,%, $<)	\tcompiled!$(DEF_COLOR)"
 
 all		:	directories $(NAME)

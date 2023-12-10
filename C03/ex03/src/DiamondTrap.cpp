@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:45:30 by vduchi            #+#    #+#             */
-/*   Updated: 2023/09/25 10:13:00 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/12/10 13:25:45 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,12 @@ DiamondTrap::DiamondTrap(void) : ClapTrap("NoName"), FragTrap("NoName"), ScavTra
 	this->setDamage(this->FragTrap::getDamage());
 	std::cout << "DiamondTrap created!" << std::endl;
 }
-DiamondTrap::~DiamondTrap(void) { std::cout << "DiamondTrap " << this->getName() << " destroyed!" << std::endl; }
+
+DiamondTrap::~DiamondTrap(void)
+{
+	std::cout << "DiamondTrap " << this->getName() << " destroyed!" << std::endl;
+}
+
 DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), FragTrap(name), ScavTrap(name)
 {
 	this->_name = name;
@@ -47,18 +52,25 @@ DiamondTrap &DiamondTrap::operator=(const DiamondTrap &cpy)
 	return *this;
 }
 
-void DiamondTrap::whoAmI(void) { std::cout << "Diamond name: " << this->getName() << " and ClapTrap name: " << this->getClapTrapName() << std::endl; }
+void DiamondTrap::whoAmI(void)
+{
+	std::cout << "Diamond name: " << this->getName() << " and ClapTrap name: " << this->getClapTrapName() << std::endl;
+}
 
-void DiamondTrap::attack(const std::string &target) { ScavTrap::attack(target); }
+void DiamondTrap::attack(const std::string &target)
+{
+	ScavTrap::attack(target);
+}
 
 void DiamondTrap::setName(std::string name)
 {
 	this->_name = name;
 	this->setClapTrapName(name);
 }
+
 std::string DiamondTrap::getName(void) const { return this->_name; }
-void DiamondTrap::setClapTrapName(std::string name) { this->ClapTrap::_name = name + "_clap_name"; }
 std::string DiamondTrap::getClapTrapName(void) const { return this->ClapTrap::_name; }
+void DiamondTrap::setClapTrapName(std::string name) { this->ClapTrap::_name = name + "_clap_name"; }
 
 std::ostream &operator<<(std::ostream &out, DiamondTrap &diamond)
 {

@@ -6,12 +6,12 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:42:14 by vduchi            #+#    #+#             */
-/*   Updated: 2023/09/22 20:47:24 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/12/10 13:18:45 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_H__
-#define SCAVTRAP_H__
+#ifndef SCAVTRAP_HPP
+#define SCAVTRAP_HPP
 
 #include <iostream>
 #include "ClapTrap.hpp"
@@ -22,15 +22,16 @@
 
 class ScavTrap : public ClapTrap
 {
+
 public:
 	ScavTrap(void);
-	ScavTrap(std::string name);
-	ScavTrap(const ScavTrap &cpy);
-	ScavTrap &operator=(const ScavTrap &cpy);
+	ScavTrap(std::string);
+	ScavTrap(const ScavTrap &);
+	ScavTrap &operator=(const ScavTrap &);
 	~ScavTrap(void);
 
 	void guardGate(void);
-	void attack(const std::string &target);
+	void attack(const std::string &);
 };
 
 #endif
