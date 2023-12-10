@@ -6,7 +6,7 @@
 #    By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 10:03:28 by vduchi            #+#    #+#              #
-#    Updated: 2023/10/16 18:16:44 by vduchi           ###   ########.fr        #
+#    Updated: 2023/12/10 13:37:36 by vduchi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,18 +44,18 @@ SRCS		+=		src/Dog.cpp
 SRCS		+=		src/Cat.cpp
 SRCS		+=		src/Brain.cpp
 SRCS		+=		src/Animal.cpp
-OBJS		=	$(patsubst $(SRCS_DIR)/%, $(OBJS_DIR)/%, $(SRCS:.cpp=.o))
+OBJS		=		$(patsubst $(SRCS_DIR)/%, $(OBJS_DIR)/%, $(SRCS:.cpp=.o))
 
 CPPFLAGS	+=	-Wall -Werror -Wextra -std=c++98 -pedantic-errors $(addprefix -I , $(INCS_DIR))
 CPPFLAGS	+=	-MMD -MP -MF $(DEPS_DIR)/$*.d
 
-CXX		=	c++
+CXX			=	c++
 RM			=	rm -rf
 MKDIR		=	mkdir -p
 MAKE		=	make --no-print-directory
 
 $(OBJS_DIR)/%.o		:	$(SRCS_DIR)/%.cpp
-	@$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
+	@$(CXX) $(CPPFLAGS) -c $< -o $@
 	@echo "$(YELLOW)$(patsubst $(SRCS_DIR)/%,%, $<)	\tcompiled!$(DEF_COLOR)"
 
 all		:	directories $(NAME)

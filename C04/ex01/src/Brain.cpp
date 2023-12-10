@@ -6,13 +6,16 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:45:30 by vduchi            #+#    #+#             */
-/*   Updated: 2023/10/16 18:27:20 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/12/10 14:24:09 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Brain.hpp"
 
-Brain::Brain(void) { std::cout << "Brain default constructor called" << std::endl; }
+Brain::Brain(void)
+{
+	std::cout << "Brain default constructor called" << std::endl;
+}
 
 Brain::Brain(const Brain &cpy)
 {
@@ -20,7 +23,10 @@ Brain::Brain(const Brain &cpy)
 	std::cout << "Brain copy constructor called" << std::endl;
 }
 
-Brain::~Brain(void) { std::cout << "Brain destructor called" << std::endl; }
+Brain::~Brain(void)
+{
+	std::cout << "Brain destructor called" << std::endl;
+}
 
 Brain &Brain::operator=(const Brain &cpy)
 {
@@ -38,15 +44,20 @@ void	Brain::setIdeas(std::string newIdea)
 
 void	Brain::setIdeas(std::string newIdea, int idx)
 {
+	if (idx > 99 || idx < 0)
+	{
+		std::cout << "Index not correct!" << std::endl;
+		return ;
+	}
 	this->ideas[idx] = newIdea;
 }
 
-std::string *Brain::getIdeas() const
+const std::string *Brain::getIdeas() const
 {
 	return this->ideas;
 }
 
-std::string &Brain::getIdeas(int idx) const
+const std::string &Brain::getIdeas(int idx) const
 {
 	return this->ideas[idx];
 }

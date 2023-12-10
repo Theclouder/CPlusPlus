@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:45:30 by vduchi            #+#    #+#             */
-/*   Updated: 2023/09/15 19:44:48 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/12/10 14:33:06 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,11 @@ Dog::Dog(const Dog &cpy) : Animal(cpy)
 	std::cout << "Dog copy constructor called" << std::endl;
 }
 
-Dog::~Dog(void) { std::cout << "Dog destructor called" << std::endl; }
+Dog::~Dog(void)
+{
+	delete this->brain;
+	std::cout << "Dog destructor called" << std::endl;
+}
 
 Dog &Dog::operator=(const Dog &cpy)
 {
@@ -36,7 +40,10 @@ Dog &Dog::operator=(const Dog &cpy)
 	return *this;
 }
 
-void Dog::makeSound() const { std::cout << "Bark!" << std::endl; }
+void Dog::makeSound() const
+{
+	std::cout << "Bark!" << std::endl;
+}
 
 void Dog::setIdeas(std::string newIdea)
 {
@@ -48,12 +55,12 @@ void Dog::setIdeas(std::string newIdea, int idx)
 	this->brain->setIdeas(newIdea, idx);
 }
 
-std::string *Dog::getIdeas() const
+const std::string *Dog::getIdeas() const
 {
 	return this->brain->getIdeas();
 }
 
-std::string &Dog::getIdeas(int idx) const
+const std::string &Dog::getIdeas(int idx) const
 {
 	return this->brain->getIdeas(idx);
 }

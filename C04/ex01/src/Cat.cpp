@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:45:30 by vduchi            #+#    #+#             */
-/*   Updated: 2023/10/16 18:34:46 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/12/10 14:33:19 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,11 @@ Cat::Cat(const Cat &cpy) : Animal(cpy)
 	std::cout << "Cat copy constructor called" << std::endl;
 }
 
-Cat::~Cat(void) { std::cout << "Cat destructor called" << std::endl; }
+Cat::~Cat(void)
+{
+	delete this->brain;
+	std::cout << "Cat destructor called" << std::endl;
+}
 
 Cat &Cat::operator=(const Cat &cpy)
 {
@@ -36,7 +40,10 @@ Cat &Cat::operator=(const Cat &cpy)
 	return *this;
 }
 
-void Cat::makeSound() const { std::cout << "Meow!" << std::endl; }
+void Cat::makeSound() const
+{
+	std::cout << "Meow!" << std::endl;
+}
 
 void Cat::setIdeas(std::string newIdea)
 {
@@ -48,12 +55,12 @@ void Cat::setIdeas(std::string newIdea, int idx)
 	this->brain->setIdeas(newIdea, idx);
 }
 
-std::string *Cat::getIdeas() const
+const std::string *Cat::getIdeas() const
 {
 	return this->brain->getIdeas();
 }
 
-std::string &Cat::getIdeas(int idx) const
+const std::string &Cat::getIdeas(int idx) const
 {
 	return this->brain->getIdeas(idx);
 }
