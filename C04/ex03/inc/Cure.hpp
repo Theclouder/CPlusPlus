@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 18:57:12 by vduchi            #+#    #+#             */
-/*   Updated: 2023/12/15 19:00:46 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/12/16 22:45:41 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ class Cure : public AMateria
 		Cure(Cure const &);
 		Cure& operator=(Cure const &);
 		~Cure();
+		void use(ICharacter&);
+		AMateria* clone() const;
 };
 
 #endif

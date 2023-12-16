@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 17:41:50 by vduchi            #+#    #+#             */
-/*   Updated: 2023/12/15 19:00:51 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/12/16 21:43:57 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,12 @@ class AMateria
 		std::string _type;
 
 	public:
-		AMateria(std::string const&);
-		std::string const& getType() const;
+		AMateria();
+		AMateria(std::string const &);
+		AMateria(AMateria const &);
+		AMateria& operator=(AMateria const &);
+		~AMateria();
+		std::string const & getType() const;
 		virtual void use(ICharacter&);
 		virtual AMateria* clone() const = 0;
 };

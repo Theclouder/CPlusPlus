@@ -6,12 +6,14 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 17:40:40 by vduchi            #+#    #+#             */
-/*   Updated: 2023/12/15 19:01:06 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/12/16 21:47:24 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AMateria.hpp"
-#include "ICharacter.hpp"
+#include "Ice.hpp"
+#include "Cure.hpp"
+#include "Character.hpp"
+#include "MateriaSource.hpp"
 
 int main()
 {
