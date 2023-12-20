@@ -1,38 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Character.hpp                                      :+:      :+:    :+:   */
+/*   AMateriaList.hpp                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/15 18:55:00 by vduchi            #+#    #+#             */
-/*   Updated: 2023/12/19 15:10:58 by vduchi           ###   ########.fr       */
+/*   Created: 2023/12/15 17:41:50 by vduchi            #+#    #+#             */
+/*   Updated: 2023/12/19 16:46:21 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHARACTER_HPP
-# define CHARACTER_HPP
+#ifndef AMATERIALIST_HPP
+# define AMATERIALIST_HPP
 
 # include <iostream>
-# include "ICharacter.hpp"
+# include "AMateria.hpp"
 
-class Character : public ICharacter
+class AMateriaList
 {
 
 	private:
-		std::string _name;
-		AMateria* _slots[4] = {};
+		AMateriaList* _bef;
+		AMateriaList* _next;
+		AMateria* _mat;
 
 	public:
-		Character();
-		Character(Character const &);
-		Character(std::string const &);
-		Character& operator=(Character const &);
-		~Character();
-		void unequip(int);
-		void equip(AMateria*);
-		void use(int, ICharacter&);
-		std::string const & getName() const;
+		AMateriaList();
+		AMateriaList(AMateria const &);
+		AMateriaList& operator=(AMateria const &);
+		~AMateriaList();
+
+		void setMat(AMateria*);
+		void setBef(AMateriaList*);
+		void setNext(AMateriaList*);
+		AMateria* getMat() const;
+		AMateriaList* getBef() const;
+		AMateriaList* getNext() const;
 };
 
 #endif
