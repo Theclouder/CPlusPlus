@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 19:15:46 by vduchi            #+#    #+#             */
-/*   Updated: 2023/12/15 19:41:47 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/12/22 21:31:25 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,18 @@
 class MateriaSource : public IMateriaSource
 {
 
+	private:
+		int _idx;
+		AMateria* _mat[4];
+
 	public:
 		MateriaSource();
 		MateriaSource(MateriaSource const &);
 		MateriaSource& operator=(MateriaSource const &);
 		~MateriaSource();
+
+		void learnMateria(AMateria*);
+		AMateria* createMateria(std::string const & type);
 };
 
 #endif

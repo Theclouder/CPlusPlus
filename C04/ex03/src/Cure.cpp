@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 22:32:33 by vduchi            #+#    #+#             */
-/*   Updated: 2023/12/16 22:40:31 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/12/22 21:42:53 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ Cure::~Cure ()
 
 AMateria* Cure::clone() const
 {
-	return new Cure();
+	return new Cure(*this);
 }
 
 void Cure::use(ICharacter& c)

@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 18:55:00 by vduchi            #+#    #+#             */
-/*   Updated: 2023/12/19 15:10:58 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/12/22 21:52:31 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 # define CHARACTER_HPP
 
 # include <iostream>
+# include "Bag.hpp"
 # include "ICharacter.hpp"
 
 class Character : public ICharacter
 {
 
 	private:
+		Bag _bag;
 		std::string _name;
-		AMateria* _slots[4] = {};
+		AMateria* _slots[4];
 
 	public:
 		Character();

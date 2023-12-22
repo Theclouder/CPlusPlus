@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.hpp                                       :+:      :+:    :+:   */
+/*   Bag.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/15 17:41:50 by vduchi            #+#    #+#             */
-/*   Updated: 2023/12/22 21:11:12 by vduchi           ###   ########.fr       */
+/*   Created: 2023/12/22 20:59:43 by vduchi            #+#    #+#             */
+/*   Updated: 2023/12/22 22:01:17 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AMATERIA_HPP
-# define AMATERIA_HPP
+#ifndef BAG_HPP
+# define BAG_HPP
 
 # include <iostream>
-# include "ICharacter.hpp"
+# include "AMateriaNode.hpp"
 
-class ICharacter;
-
-class AMateria
+class Bag
 {
 
-	protected:
-		std::string _type;
-
+	private:
+		int _size;
+		AMateriaNode* _first;
+		AMateriaNode* _last;
+	
 	public:
-		AMateria();
-		AMateria(std::string const &);
-		AMateria(AMateria const &);
-		AMateria& operator=(AMateria const &);
-		~AMateria();
-		std::string const & getType() const;
-		virtual void use(ICharacter&);
-		virtual AMateria* clone() const = 0;
+		Bag();
+		Bag(Bag const &);
+		Bag& operator=(Bag const &);
+		~Bag();
+
+		void clearList();
+		void addNode(AMateriaNode const *);
+		AMateriaNode* getLast() const;
+//		AMateriaNode* getNode(int) const;
 };
 
 #endif
-

@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 22:29:37 by vduchi            #+#    #+#             */
-/*   Updated: 2023/12/16 22:39:04 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/12/22 21:43:01 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ Ice::~Ice ()
 
 AMateria* Ice::clone() const
 {
-	return new Ice();
+	return new Ice(*this);
 }
 
 void Ice::use(ICharacter& c)

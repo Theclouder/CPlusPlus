@@ -68,4 +68,5 @@ readline/shlib/Makefile
 readline/stamp-h
 *.DS_Store
 *.vscode*
+session
 tags

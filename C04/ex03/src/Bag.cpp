@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateriaList.cpp                                   :+:      :+:    :+:   */
+/*   Bag.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/19 16:11:15 by vduchi            #+#    #+#             */
-/*   Updated: 2023/12/19 16:18:48 by vduchi           ###   ########.fr       */
+/*   Created: 2023/12/22 20:59:19 by vduchi            #+#    #+#             */
+/*   Updated: 2023/12/22 22:00:04 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AMateriaList.hpp"
+#include "Bag.hpp"
 
-AMateriaList::AMateriaList()
+Bag::Bag()
 {
-	this->_mat = NULL;
-	this->_next = NULL;
+	this->_size = 0;
+	this->_first = NULL;
+	this->_last = NULL;
 }
 
-AMateriaList::AMateriaList(AMateriaList const & other)
+Bag::Bag(Bag const & other)
 {
 	*this = other;
 }
 
-AMateriaList& AMateriaList::operator=(AMateriaList const & other)
+Bag& Bag::operator=(Bag const & other)
 {
-	this->_mat = other->_mat;
-	this->_bef = other->_bef;
-	this->_next = other->_next;
+	this->_size = other->_size;
+	this->_first = other->_first;
+	this->_last = this->_last;
+	return *this;
 }
 
-AMateriaList::~AMateriaList()
+Bag::~Bag()
 {
-	this->_mat = NULL;
-	this->_bef = NULL;
-	this->_next = NULL;
+	this->clearList();
 }
