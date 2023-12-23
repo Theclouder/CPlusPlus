@@ -6,12 +6,12 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 17:41:50 by vduchi            #+#    #+#             */
-/*   Updated: 2023/12/22 21:07:08 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/12/23 21:03:07 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AMATERIALIST_HPP
-# define AMATERIALIST_HPP
+#ifndef AMATERIANODE_HPP
+# define AMATERIANODE_HPP
 
 # include <iostream>
 # include "AMateria.hpp"
@@ -26,8 +26,9 @@ class AMateriaNode
 
 	public:
 		AMateriaNode();
-		AMateriaNode(AMateria const &);
-		AMateriaNode& operator=(AMateria const &);
+		AMateriaNode(AMateria*);
+		AMateriaNode(AMateriaNode const &);
+		AMateriaNode& operator=(AMateriaNode const &);
 		~AMateriaNode();
 
 		void setMat(AMateria*);

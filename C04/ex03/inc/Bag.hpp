@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 20:59:43 by vduchi            #+#    #+#             */
-/*   Updated: 2023/12/22 22:01:17 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/12/23 21:07:58 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ class Bag
 
 	private:
 		int _size;
-		AMateriaNode* _first;
 		AMateriaNode* _last;
 	
 	public:
@@ -30,10 +29,8 @@ class Bag
 		Bag& operator=(Bag const &);
 		~Bag();
 
-		void clearList();
-		void addNode(AMateriaNode const *);
+		void addNode(AMateria *);
 		AMateriaNode* getLast() const;
-//		AMateriaNode* getNode(int) const;
 };
 
 #endif

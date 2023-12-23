@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 17:41:50 by vduchi            #+#    #+#             */
-/*   Updated: 2023/12/22 21:11:12 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/12/23 21:18:15 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ class AMateria
 		AMateria(std::string const &);
 		AMateria(AMateria const &);
 		AMateria& operator=(AMateria const &);
-		~AMateria();
+		virtual ~AMateria();
+
 		std::string const & getType() const;
 		virtual void use(ICharacter&);
 		virtual AMateria* clone() const = 0;

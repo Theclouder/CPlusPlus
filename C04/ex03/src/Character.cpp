@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 22:52:57 by vduchi            #+#    #+#             */
-/*   Updated: 2023/12/22 21:54:27 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/12/23 21:21:02 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,12 @@
 
 Character::Character ()
 {
-	std::cout << "Character default constructor called!" << std::endl;
 	for (int i = 0; i < 4; i++)
 		this->_slots[i] = NULL;
 }
 
 Character::Character (std::string const & name) : _name(name)
 {
-	std::cout << "Character of name " << name << " created!" << std::endl;
 	for (int i = 0; i < 4; i++)
 		this->_slots[i] = NULL;
 }
@@ -29,12 +27,10 @@ Character::Character (std::string const & name) : _name(name)
 Character::Character (Character const & other)
 {
 	*this = other;
-	std::cout << "Character copy constructor called!" << std::endl;
 }
 
 Character& Character::operator=(Character const & other)
 {
-	std::cout << "Character assignment operator called!" << std::endl;
 	this->_name = other.getName();
 	for (int i = 0; i < 4; i++)
 	{
@@ -43,15 +39,14 @@ Character& Character::operator=(Character const & other)
 			delete this->_slots[i];
 			this->_slots[i] = NULL;
 		}
-		if (other->_slots[i] != NULL)
-			this->_slots[i] = other->_slots[i];
+		if (other._slots[i] != NULL)
+			this->_slots[i] = other._slots[i];
 	}
 	return *this;
 }
 
 Character::~Character ()
 {
-	std::cout << "Character destructor called!" << std::endl;
 	for (int i = 0; i < 4; i++)
 		if (this->_slots[i] != NULL)
 			delete this->_slots[i];
@@ -65,7 +60,7 @@ void Character::unequip(int i)
 		std::cout << "Materia already unequipped or not equipped" << std::endl;
 	else
 	{
-		this->_bag->addNode(this->_slots[i]);
+		this->_bag.addNode(this->_slots[i]);
 		this->_slots[i] = NULL;
 	}
 }
@@ -90,10 +85,15 @@ void Character::use(int i, ICharacter& c)
 		std::cout << "Use index out of range" << std::endl;
 		return ;
 	}
-	*(this->_slots[i])::use(c);
+	else if (this->_slots[i] == NULL)
+	{
+		std::cout << "Don't have this weapon equipped!" << std::endl;
+		return ;
+	}
+	this->_slots[i]->use(c);
 }
 
-std::string const & Character::getName()
+std::string const & Character::getName() const
 {
 	return this->_name;
 }

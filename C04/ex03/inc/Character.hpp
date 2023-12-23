@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 18:55:00 by vduchi            #+#    #+#             */
-/*   Updated: 2023/12/22 21:52:31 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/12/23 21:19:38 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ class Character : public ICharacter
 		Character(std::string const &);
 		Character& operator=(Character const &);
 		~Character();
+
 		void unequip(int);
 		void equip(AMateria*);
 		void use(int, ICharacter&);

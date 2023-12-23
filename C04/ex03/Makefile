@@ -6,7 +6,7 @@
 #    By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 10:03:28 by vduchi            #+#    #+#              #
-#    Updated: 2023/12/16 22:55:22 by vduchi           ###   ########.fr        #
+#    Updated: 2023/12/23 20:33:34 by vduchi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,9 +41,12 @@ DEPS_DIR	=	.deps
 
 SRCS		=		src/main.cpp
 SRCS		+=		src/Ice.cpp
+SRCS		+=		src/Bag.cpp
 SRCS		+=		src/Cure.cpp
 SRCS		+=		src/AMateria.cpp
 SRCS		+=		src/Character.cpp
+SRCS		+=		src/AMateriaNode.cpp
+SRCS		+=		src/MateriaSource.cpp
 OBJS		=		$(patsubst $(SRCS_DIR)/%, $(OBJS_DIR)/%, $(SRCS:.cpp=.o))
 
 CPPFLAGS	+=	-Wall -Werror -Wextra -std=c++98 -pedantic-errors $(addprefix -I , $(INCS_DIR))
