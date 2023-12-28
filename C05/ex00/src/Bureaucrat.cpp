@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 12:41:00 by vduchi            #+#    #+#             */
-/*   Updated: 2023/12/27 14:50:56 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/12/28 16:39:45 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat & other) { *this = other; }
 
 Bureaucrat::Bureaucrat(const std::string & name) : _name(name), _grade(75) {}
 
-Bureaucrat::Bureaucrat(const std::string & name, const int grade) : _name(name), _grade(grade) {}
+Bureaucrat::Bureaucrat(const std::string & name, const unsigned int grade) : _name(name), _grade(grade) {}
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat & other)
 {
@@ -40,29 +40,26 @@ std::ostream& operator<<(std::ostream & os, const Bureaucrat & other)
 
 void Bureaucrat::gradeUp()
 {
+	std::cout << "Grading up..." << std::endl;
 	if (this->_grade - 1 < 1)
-		std::cout << "Grade already at maximum" << std::endl;
+		throw Bureaucrat::GradeTooHighException("");
+//		std::cout << "Grade already at maximum" << std::endl;
 	else
 		this->_grade -= 1;
+	std::cout << "Now " << *this << "has a grade of " << this->getGrade() << std::endl;
 }
 
 void Bureaucrat::gradeDown()
 {
+	std::cout << "Grading down..." << std::endl;
 	if (this->_grade + 1 > 150)
-		throw Bureaucrat::GradeTooLowException();
+		throw Bureaucrat::GradeTooLowException("");
 //		std::cout << "Grade already at maximum" << std::endl;
 	else
 		this->_grade += 1;
+	std::cout << "Now " << *this << "has a grade of " << this->getGrade() << std::endl;
 }
 
-std::string Bureaucrat::GradeTooLowException() throw()
-{
-	std::string out = "Grade too low!\n";
-	return out;
-}
+Bureaucrat::GradeTooLowException::GradeTooLowException (std::string msg) : std::out_of_range(msg + "Grade too low!") {}
 
-std::string Bureaucrat::GradeTooHighException() throw()
-{
-	std::string out = "Grade too high!\n";
-	return out;
-}
+Bureaucrat::GradeTooHighException::GradeTooHighException (std::string msg) : std::out_of_range(msg + "Grade too high!") {}

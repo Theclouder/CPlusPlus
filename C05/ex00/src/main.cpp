@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 14:49:58 by vduchi            #+#    #+#             */
-/*   Updated: 2023/12/27 14:51:16 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/12/28 16:40:10 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,13 @@
 int main()
 {
 	Bureaucrat test("Valerio", 1);
-	test.gradeUp();
+	try
+	{
+		test.gradeUp();
+		test.gradeDown();
+	}
+	catch (std::exception & ex)
+	{
+		std::cout << "Error" << std::endl;
+	}
 }
