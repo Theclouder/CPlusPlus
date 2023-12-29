@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:55:31 by vduchi            #+#    #+#             */
-/*   Updated: 2023/10/16 18:04:23 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/12/29 14:12:09 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int main(void)
 	dog.makeSound();
 	std::cout << std::endl;
 
-	std::cout << std::endl;
 	const Animal* meta = new Animal();
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
@@ -46,5 +45,10 @@ int main(void)
 	k->makeSound(); // will output the wrong animal sound!
 	meta->makeSound();
 	std::cout << std::endl;
+
+	delete meta;
+	delete i;
+	delete j;
+	delete k;
 }
 

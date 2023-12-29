@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:42:14 by vduchi            #+#    #+#             */
-/*   Updated: 2023/12/10 13:34:02 by vduchi           ###   ########.fr       */
+/*   Updated: 2023/12/29 14:12:24 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ public:
 	Animal(void);
 	Animal(std::string);
 	Animal(const Animal &);
-	~Animal(void);
+	virtual ~Animal(void);
 	Animal &operator=(const Animal &);
 
 	void setType(std::string);
