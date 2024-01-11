@@ -1,6 +1,7 @@
 #!/bin/bash
 
 red="\033[0;31m"
+l_red="\033[1;31m"
 green="\033[0;32m"
 purple="\033[0;35m"
 reset="\033[0m"
@@ -28,6 +29,7 @@ second_part_const="
 
 idx=0
 keep=0
+class=$1
 arr_val=( "" "" "" "" "" )
 arr_sent=( "Enter property type:" "Enter property name:" "Is it a pointer or not?" "Is it const?" "Is it private or protected? [0/1]" )
 arr_err=( "Enter 1/y for yes or 0/n for no" "Enter 1 for protected or 0 for private" )
@@ -35,7 +37,25 @@ declare -a all_vars
 declare -a list_vars
 
 create_custom_constr() {
-	echo HOla
+	if [ ${#all_vars[@]} -ne 0 ]; then
+		custom_constr_hpp=$'\t\t'
+		custom_constr_hpp+="$class("
+		for ((i = 0; i <= idx; i++)); do
+			arr=(${all_vars[$i]})
+			if [ ${arr[3]} = "1" ]; then
+				custom_constr_hpp+=$'const '
+			fi
+			custom_constr_hpp+="${arr[0]}"
+			if [ ${arr[2]} = "1" ]; then
+				custom_constr_hpp+=$'*'
+			fi
+			if [ $i -ne $idx ]; then
+				custom_constr_hpp+=", "
+			fi
+		done
+		custom_constr_hpp+=$');'
+	fi
+	echo $custom_constr_hpp
 }
 
 print_vars() {
@@ -94,12 +114,12 @@ add_variables() {
 		vars+=$'\tprotected:\n'
 		print_vars
 	fi
-	echo -e "$vars"
-	echo
-	for i in "${list_vars[@]}"; do
-		echo "${i}"
-	done
-	echo
+#	echo -e "$vars"
+#	echo
+#	for i in "${list_vars[@]}"; do
+#		echo "${i}"
+#	done
+#	echo
 }
 
 check_value() {
@@ -152,6 +172,9 @@ refill_array() {
 			keep=0
 			((idx++))
 			return 1
+		elif [ $check != "N" -a $check != "n" ]; then
+			echo -e "$red${arr_err[0]}"
+			refill_array
 		else
 			return 2
 		fi
@@ -161,17 +184,19 @@ refill_array() {
 
 echo -e -n "${purple}Do you want to add some properties? [Y/n] "
 read ans
-
-if [ -z "$ans" ] || [ $ans = "Y" ]; then
+if [ -z "$ans" ] || [ $ans = "Y" -o $ans = "y" ]; then
 	while [ $keep -lt 5 ]; do
 		echo -e -n "$purple${arr_sent[$keep]} "
 		read val
-		echo -e -n $reset
 		if [ $? == 1 ]; then
-			echo
+			exit
+		elif [[ "${val}" =~ [^a-zA-Z] ]] && [ $keep -lt 2 ]; then
+			echo -e "${red}Variable name and type can contain only letters"
+			continue ;
 		fi
+		echo -e -n $reset
 		if [ -z $val ]; then
-			echo -e -n "Exit? "
+			echo -e -n "${l_red}Exit? "
 			read check
 			if [ -z "$check" ] || [ $check = "Y" -o $check = "y" ]; then
 				break ;
@@ -195,11 +220,13 @@ if [ -z "$ans" ] || [ $ans = "Y" ]; then
 		((keep++))
 	done
 fi
-for ((i = 0; i <= idx; i++)); do
-	echo "${all_vars[$i]}"
-done
+#for ((i = 0; i <= idx; i++)); do
+#	echo "${all_vars[$i]}"
+#done
 
 add_variables
+create_custom_constr
+exit
 out="$header$vars$first_part_const$custom_const$second_part_const"
 cat > $1.hpp << EOF
 $out
@@ -221,3 +248,4 @@ $1& $1::operator=(const $1 & rhs)
 
 $1::~$1() {}
 EOF
+echo -e "${green}Class $1 created!"
