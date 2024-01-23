@@ -6,7 +6,7 @@
 #    By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 10:03:28 by vduchi            #+#    #+#              #
-#    Updated: 2023/12/27 14:51:48 by vduchi           ###   ########.fr        #
+#    Updated: 2024/01/23 11:10:03 by vduchi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ MID_GRAY		=	\033[38;5;245m
 DARK_GREEN		=	\033[38;2;75;179;82
 DARK_YELLOW		=	\033[38;5;143m
 
-NAME		=	Interface
+NAME		=	Bureaucrat
 
 SRCS_DIR	=	src
 INCS_DIR	=	inc
