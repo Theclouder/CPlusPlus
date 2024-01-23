@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/AForm.hpp"
-#include "../inc/Colors.hpp"
+#include "AForm.hpp"
+#include "Colors.hpp"
 
 AForm::AForm() : _name("AForm"), _isSigned(false), _gradeSign(0), _gradeExecute(0) {}
 

@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/Form.hpp"
-#include "../inc/Colors.hpp"
+#include "Form.hpp"
+#include "Colors.hpp"
 
 Form::Form() : _name("Form"), _isSigned(false), _gradeSign(0), _gradeExecute(0) {}
 

@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/Colors.hpp"
-#include "../inc/Bureaucrat.hpp"
-#include "../inc/RobotomyRequestForm.hpp"
-#include "../inc/ShrubberyCreationForm.hpp"
-#include "../inc/PresidentialPardonForm.hpp"
+#include "Colors.hpp"
+#include "Bureaucrat.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main()
 {

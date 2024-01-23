@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/Colors.hpp"
-#include "../inc/Bureaucrat.hpp"
+#include "Colors.hpp"
+#include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat() : _name("NoName"), _grade(75) {}
 

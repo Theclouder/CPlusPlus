@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/Form.hpp"
-#include "../inc/Colors.hpp"
-#include "../inc/Bureaucrat.hpp"
+#include "Form.hpp"
+#include "Colors.hpp"
+#include "Bureaucrat.hpp"
 
 int main()
 {
