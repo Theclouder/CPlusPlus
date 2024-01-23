@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:15:51 by vduchi            #+#    #+#             */
-/*   Updated: 2024/01/23 17:25:53 by vduchi           ###   ########.fr       */
+/*   Updated: 2024/01/23 18:08:43 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,11 @@ void ShrubberyCreationForm::execute(const Bureaucrat & executor) const
 	std::ofstream myFile(this->getTarget() + "_shrubbery");
 	myFile << "ex02/" << std::endl << "|– Makefile" << std::endl;
 	myFile << "|– inc/" << std::endl << "| |– AForm.hpp" << std::endl << "| |– Bureaucrat.hpp" << std::endl;
-	myFile << "| |– Colors.hpp" << std::endl << "| |– PresidentialPardonForm.hpp" << std::endl;
+	myFile << "| |– Colors.hpp" << std::endl << "| |– Intern.hpp" << std::endl;
+	myFile << "| |– PresidentialPardonForm.hpp" << std::endl;
 	myFile << "| |– RobotoryRequestForm.hpp" << std::endl << "| |– ShrubberyCreationForm.hpp" << std::endl;
-	myFile << "|– src/" << std::endl << "| |– AForm.cpp" << std::endl;
-	myFile << "| |– Bureaucrat.cpp" << std::endl << "| |– PresidentialPardonForm.cpp" << std::endl;
+	myFile << "|– src/" << std::endl << "| |– AForm.cpp" << std::endl << "| |– Bureaucrat.cpp" << std::endl;
+	myFile << "| |– Intern.cpp" << std::endl << "| |– PresidentialPardonForm.cpp" << std::endl;
 	myFile << "| |– RobotoryRequestForm.cpp" << std::endl << "| |– ShrubberyCreationForm.cpp" << std::endl;
 	myFile.close();
 	std::cout << MAGENTA << this->getTarget() << "_shrubbery file created!" << RESET << std::endl;

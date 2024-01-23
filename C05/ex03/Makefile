@@ -6,7 +6,7 @@
 #    By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 10:03:28 by vduchi            #+#    #+#              #
-#    Updated: 2024/01/23 13:06:06 by vduchi           ###   ########.fr        #
+#    Updated: 2024/01/23 17:32:45 by vduchi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ DEPS_DIR	=	.deps
 
 SRCS		=		src/main.cpp
 SRCS		+=		src/AForm.cpp
+SRCS		+=		src/Intern.cpp
 SRCS		+=		src/Bureaucrat.cpp
 SRCS		+=		src/ShrubberyCreationForm.cpp
 SRCS		+=		src/RobotomyRequestForm.cpp
