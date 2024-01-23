@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:15:22 by vduchi            #+#    #+#             */
-/*   Updated: 2024/01/23 13:23:52 by vduchi           ###   ########.fr       */
+/*   Updated: 2024/01/23 15:40:48 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
-# define FORM_HPP
+#ifndef AFORM_HPP
+# define AFORM_HPP
 
 #include <iostream>
 #include "Bureaucrat.hpp"
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
 	private:
 		const std::string _name;
@@ -27,11 +27,11 @@ class Form
 		const int _gradeExecute;
 
 	public:
-		Form();
-		Form(const Form &);
-		Form(const std::string, const int, const int);
-		Form& operator=(const Form &);
-		~Form();
+		AForm();
+		AForm(const AForm &);
+		AForm(const std::string, const int, const int);
+		AForm& operator=(const AForm &);
+		virtual ~AForm();
 
 		const std::string getName() const;
 		bool getSigned() const;
@@ -40,6 +40,7 @@ class Form
 		
 		void setSigned(const bool);
 		void beSigned(const Bureaucrat &);
+		virtual void execute(const Bureaucrat &) const = 0;
 		class GradeTooHighException : public std::out_of_range
 		{
 			public:
@@ -55,10 +56,20 @@ class Form
 			public:
 				FormSignedException(std::string msg);
 		};
+		class FormNotSignedException : public std::logic_error
+		{
+			public:
+				FormNotSignedException(std::string msg);
+		};
+		class FormExecutedException : public std::logic_error
+		{
+			public:
+				FormExecutedException(std::string msg);
+		};
 
 };
 
-std::ostream& operator<<(std::ostream & os, const Form & data);
+std::ostream& operator<<(std::ostream & os, const AForm & data);
 
 #endif
 
