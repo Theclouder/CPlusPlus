@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 18:26:14 by vduchi            #+#    #+#             */
-/*   Updated: 2024/01/24 12:51:27 by vduchi           ###   ########.fr       */
+/*   Updated: 2024/01/24 17:42:30 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,98 +28,173 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter & rhs)
 
 ScalarConverter::~ScalarConverter() {}
 
-void printOutput(const std::string & c, const int & i, const float & f, const double & d)
+void printOutput(t_vars & vars)
 {
-	std::cout << "char: " << c << std::endl;
-	std::cout << "int: " << i << std::endl;
-	std::cout << "float: " << f << std::endl;
-	std::cout << "double: " << d << std::endl;
+	vars.res_i = vars.s_i.str();
+	vars.res_c = vars.s_c.str();
+	vars.res_f = vars.s_f.str();
+	vars.res_d = vars.s_d.str();
+	std::cout << "char: " << vars.res_c << std::endl;
+	std::cout << "int: " << vars.res_i << std::endl;
+	std::cout << "float: " << vars.res_f << std::endl;
+	std::cout << "double: " << vars.res_d << std::endl;
 }
 
-int ScalarConverter::printUnknown(const std::string & input, int i)
+void ScalarConverter::setVars(t_vars & vars, const std::string & input)
 {
-	(void)input;
-	(void)i;
-	return 1;
+	vars.i = 0;
+	vars.c = 0;
+	vars.f = 0.0f;
+	vars.d = 0.0;
+	vars.str = input.c_str();
+}
+
+int ScalarConverter::printUnknown(int i)
+{
+	std::cout << "char: impossible" << std::endl;
+	std::cout << "int: impossible"  << std::endl;
+	if (i < 2)
+	{
+		std::cout << "float: -inff" << std::endl;
+		std::cout << "double: -inf" << std::endl;
+	}
+	else if (i >= 2 && i < 4)
+	{
+		std::cout << "float: +inff" << std::endl;
+		std::cout << "double: +inf" << std::endl;
+	}
+	else
+	{
+		std::cout << "float: nanf" << std::endl;
+		std::cout << "double: nan" << std::endl;
+	}
+	return 0;
 }
 
 void ScalarConverter::convertChar(const std::string & input)
 {
-	int n;
-	char c;
-	float f;
-	double d;
-	std::string out;
-	c = input[1];
-	n = static_cast<int>(c);
-	f = static_cast<float>(c);
-	d = static_cast<double>(c);
-	if (n < 33 || n > 126)
-		out = "Not displayable!";
+	t_vars vars;
+	ScalarConverter::setVars(vars, input);
+	vars.c = input[0];
+	if (!isprint(vars.c))
+		vars.s_c << "Not displayable!";
 	else
-		out = c;
-	printOutput(out, n, f, d);
+		vars.s_c << vars.c;
+	vars.s_i << static_cast<int>(vars.c);
+	vars.s_f << static_cast<float>(vars.c);
+	vars.s_d << static_cast<double>(vars.c);
+	printOutput(vars);
 }
 
 void ScalarConverter::convertInt(const std::string & input)
 {
-	int n;
-	char c;
-	float f;
-	double d;
-	std::string out;
-	const char *str = input.c_str();
-	n = atoi(str);
-	c = static_cast<char>(n);
-	f = static_cast<float>(n);
-	d = static_cast<double>(n);
-	if (n < 33 || n > 126)
-		out = "Not displayable!";
+	long l;
+	t_vars vars;
+	
+	l = atol(vars.str);
+	ScalarConverter::setVars(vars, input);
+	if (l > std::numeric_limits<int>::max() || l < std::numeric_limits<int>::min())
+	{
+		vars.s_i << "Overflow/Underflow!";
+		vars.s_c << "Overflow/Underflow!";
+		vars.s_f << static_cast<float>(l);
+		vars.s_d << static_cast<double>(l);
+	}
 	else
-		out = c;
-	printOutput(out, n, f, d);
+	{
+		vars.s_i << atoi(vars.str);
+		if (l > std::numeric_limits<char>::max() || l < std::numeric_limits<char>::min())
+			vars.s_c << "Overflow/Underflow!";
+		else
+		{
+			vars.c = static_cast<char>(l);
+			if (!isprint(vars.c))
+				vars.s_i << "Not displayable!";
+			else
+				vars.s_c << vars.c;
+		}
+		vars.s_f << static_cast<float>(l);
+		vars.s_d << static_cast<double>(l);
+	}
+	printOutput(vars);
 }
 
 void ScalarConverter::convertFloat(const std::string & input)
 {
-	int n;
-	char c;
-	float f;
 	double d;
-	std::string out;
-	f = std::stof(input);
-	n = static_cast<int>(f);
-	c = static_cast<char>(n);
-	d = static_cast<double>(f);
-	if (n < 33 || n > 126)
-		out = "Not displayable!";
+	t_vars vars;
+
+	d = atof(vars.str);
+	ScalarConverter::setVars(vars, input);
+	if (d > std::numeric_limits<float>::max() || d < std::numeric_limits<float>::min())
+	{
+		vars.s_i << "Overflow/Underflow!";
+		vars.s_c << "Overflow/Underflow!";
+		vars.s_f << "Overflow/Underflow!";
+		vars.s_d << static_cast<double>(d);
+	}
 	else
-		out = c;
-	printOutput(out, n, f, d);
+	{
+		vars.s_f << atof(vars.str);
+		if (d > std::numeric_limits<int>::max() || d < std::numeric_limits<int>::min())
+			vars.s_i << "Overflow/Underflow!";
+		else
+			vars.s_i << static_cast<int>(d);
+		if (d > std::numeric_limits<char>::max() || d < std::numeric_limits<char>::min())
+			vars.s_c << "Overflow/Underflow!";
+		else
+		{
+			vars.c = static_cast<char>(d);
+			if (!isprint(vars.c))
+				vars.s_i << "Not displayable!";
+			else
+				vars.s_c << vars.c;
+		}
+		vars.s_f << static_cast<float>(d);
+		vars.s_d << static_cast<double>(d);
+	}
+	printOutput(vars);
 }
 
 void ScalarConverter::convertDouble(const std::string & input)
 {
-	int n;
-	char c;
-	float f;
-	double d;
-	std::string out;
-	const char *str = input.c_str();
-	d = atof(str);
-	n = static_cast<int>(d);
-	c = static_cast<char>(n);
-	f = static_cast<float>(d);
-	if (n < 33 || n > 126)
-		out = "Not displayable!";
+	t_vars vars;
+
+	ScalarConverter::setVars(vars, input);
+	vars.d = atof(vars.str);
+	vars.s_d << static_cast<double>(vars.d);
+	if (vars.d > std::numeric_limits<float>::max() || vars.d < std::numeric_limits<float>::min())
+	{
+		vars.s_i << "Overflow/Underflow!";
+		vars.s_c << "Overflow/Underflow!";
+		vars.s_f << "Overflow/Underflow!";
+	}
 	else
-		out = c;
-	printOutput(out, n, f, d);
+	{
+		vars.s_f << atof(vars.str);
+		if (vars.d > std::numeric_limits<int>::max() || vars.d < std::numeric_limits<int>::min())
+			vars.s_i << "Overflow/Underflow!";
+		else
+			vars.s_i << static_cast<int>(vars.d);
+		if (vars.d > std::numeric_limits<char>::max() || vars.d < std::numeric_limits<char>::min())
+			vars.s_c << "Overflow/Underflow!";
+		else
+		{
+			vars.c = static_cast<char>(vars.d);
+			if (!isprint(vars.c))
+				vars.s_i << "Not displayable!";
+			else
+				vars.s_c << vars.c;
+		}
+		vars.s_f << static_cast<float>(vars.d);
+		vars.s_d << static_cast<double>(vars.d);
+	}
+	printOutput(vars);
 }
 
 bool ScalarConverter::ifChar(const std::string & input)
 {
-	if (input.length() == 3 && input[0] == '\'' && input[2] == '\'')
+	if (input.length() == 1 && isalpha(input[0]))
 	{
 		ScalarConverter::convertChar(input);
 		return true;
@@ -188,9 +263,11 @@ int ScalarConverter::convert(const std::string & input)
 	for (i = 0; i < 4; i++)
 		if (typeFuncs[i](input))
 			return 1;
-	for (i = 0; i < 4; i++)
+	for (i = 0; i < 6; i++)
+	{
 		if (unknown[i].compare(input) == 0)
-			return ScalarConverter::printUnknown(input, i);
+			return ScalarConverter::printUnknown(i);
+	}
 	std::cout << RED << "Conversion not possible!" << RESET << std::endl;
 	return 0;
 }
