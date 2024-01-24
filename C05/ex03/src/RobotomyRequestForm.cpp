@@ -23,6 +23,9 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm & rhs) : \
 
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm & rhs)
 {
+	this->setName(rhs.getName());
+	this->setGradeSign(rhs.getGradeSign());
+	this->setGradeExecute(rhs.getGradeExecute());
 	this->setSigned(rhs.getSigned());
 	return *this;
 }

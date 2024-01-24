@@ -23,6 +23,9 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm & rh
 
 PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm & rhs)
 {
+	this->setName(rhs.getName());
+	this->setGradeSign(rhs.getGradeSign());
+	this->setGradeExecute(rhs.getGradeExecute());
 	this->setSigned(rhs.getSigned());
 	return *this;
 }

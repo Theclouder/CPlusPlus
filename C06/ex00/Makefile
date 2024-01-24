@@ -6,7 +6,7 @@
 #    By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 10:03:28 by vduchi            #+#    #+#              #
-#    Updated: 2024/01/23 18:36:04 by vduchi           ###   ########.fr        #
+#    Updated: 2024/01/24 11:27:21 by vduchi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ MID_GRAY		=	\033[38;5;245m
 DARK_GREEN		=	\033[38;2;75;179;82
 DARK_YELLOW		=	\033[38;5;143m
 
-NAME		=	Conversion
+NAME		=	convert
 
 SRCS_DIR	=	src
 INCS_DIR	=	inc
@@ -40,7 +40,7 @@ OBJS_DIR	=	.objs
 DEPS_DIR	=	.deps
 
 SRCS		=		src/main.cpp
-#SRCS		+=		src/ScalarConverter.cpp
+SRCS		+=		src/ScalarConverter.cpp
 OBJS		=		$(patsubst $(SRCS_DIR)/%, $(OBJS_DIR)/%, $(SRCS:.cpp=.o))
 
 CPPFLAGS	+=	-Wall -Werror -Wextra -std=c++98 -pedantic-errors $(addprefix -I , $(INCS_DIR))

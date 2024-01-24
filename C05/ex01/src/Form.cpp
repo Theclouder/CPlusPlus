@@ -22,6 +22,9 @@ Form::Form(const Form & rhs) : _name(rhs._name), _gradeSign(rhs._gradeSign), _gr
 
 Form& Form::operator=(const Form & rhs)
 {
+	const_cast<std::string&>(this->_name) = rhs.getName();
+	const_cast<int&>(this->_gradeSign) = rhs.getGradeSign();
+	const_cast<int&>(this->_gradeExecute) = rhs.getGradeExecute();
 	this->_isSigned = rhs._isSigned;
 	return *this;
 }

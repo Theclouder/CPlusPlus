@@ -31,6 +31,7 @@ Bureaucrat::Bureaucrat(const std::string & name, const unsigned int grade) : _na
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat & other)
 {
+	const_cast<std::string&>(this->_name) = other.getName();
 	this->_grade = other.getGrade();
 	return *this;
 }

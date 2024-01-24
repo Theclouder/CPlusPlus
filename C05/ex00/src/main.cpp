@@ -19,7 +19,7 @@ int main()
 		try
 		{
 			Bureaucrat test("Valerio", 1);
-			std::cout << CYAN <<  test << " has a grade of " << test.getGrade() << RESET << std::endl;
+			std::cout << CYAN <<  test << RESET << std::endl;
 			test.gradeUp();
 			test.gradeDown();
 		}
@@ -33,7 +33,7 @@ int main()
 		try
 		{
 			Bureaucrat test("Nacho", 15);
-			std::cout << CYAN <<  test << " has a grade of " << test.getGrade() << RESET << std::endl;
+			std::cout << CYAN <<  test << RESET << std::endl;
 			test.gradeUp();
 			test.gradeDown();
 		}
@@ -47,7 +47,7 @@ int main()
 		try
 		{
 			Bureaucrat test("Giuliano", 150);
-			std::cout << CYAN <<  test << " has a grade of " << test.getGrade() << RESET << std::endl;
+			std::cout << CYAN <<  test << RESET << std::endl;
 			test.gradeDown();
 		}
 		catch (std::exception & ex)
@@ -60,7 +60,7 @@ int main()
 		try
 		{
 			Bureaucrat test("Hola", 200);
-			std::cout << CYAN <<  test << " has a grade of " << test.getGrade() << RESET << std::endl;
+			std::cout << CYAN <<  test << RESET << std::endl;
 			test.gradeDown();
 		}
 		catch (std::exception & ex)

@@ -22,6 +22,9 @@ AForm::AForm(const AForm & rhs) : _name(rhs._name), _gradeSign(rhs._gradeSign), 
 
 AForm& AForm::operator=(const AForm & rhs)
 {
+	const_cast<std::string&>(this->_name) = rhs.getName();
+	const_cast<int&>(this->_gradeSign) = rhs.getGradeSign();
+	const_cast<int&>(this->_gradeExecute) = rhs.getGradeExecute();
 	this->_isSigned = rhs._isSigned;
 	return *this;
 }
@@ -68,6 +71,21 @@ int AForm::getGradeSign() const
 int AForm::getGradeExecute() const
 {
 	return this->_gradeExecute;
+}
+
+void AForm::setName(const std::string & name)
+{
+	const_cast<std::string&>(this->_name) = name;
+}
+
+void AForm::setGradeSign(int gradeSign)
+{
+	const_cast<int&>(this->_gradeSign) = gradeSign;
+}
+
+void AForm::setGradeExecute(int gradeExecute)
+{
+	const_cast<int&>(this->_gradeExecute) = gradeExecute;
 }
 
 void AForm::setSigned(const bool isSigned)

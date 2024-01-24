@@ -31,6 +31,7 @@ Bureaucrat::Bureaucrat(const std::string & name, const unsigned int grade) : _na
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat & other)
 {
+	const_cast<std::string&>(this->_name) = other.getName();
 	this->_grade = other.getGrade();
 	return *this;
 }
@@ -54,7 +55,7 @@ void Bureaucrat::gradeUp()
 		throw Bureaucrat::GradeTooHighException("");
 	else
 		this->_grade -= 1;
-	std::cout << GREEN << "Now " << *this << " has a grade of " << this->getGrade() << RESET << std::endl;
+	std::cout << GREEN << "Now " << this->getName() << " has a grade of " << this->getGrade() << RESET << std::endl;
 }
 
 void Bureaucrat::gradeDown()
@@ -64,7 +65,7 @@ void Bureaucrat::gradeDown()
 		throw Bureaucrat::GradeTooLowException("");
 	else
 		this->_grade += 1;
-	std::cout << GREEN << "Now " << *this << " has a grade of " << this->getGrade() << RESET << std::endl;
+	std::cout << GREEN << "Now " << this->getName() << " has a grade of " << this->getGrade() << RESET << std::endl;
 }
 
 Bureaucrat::GradeTooLowException::GradeTooLowException (std::string msg) : std::out_of_range(msg + "Grade too low!") {}

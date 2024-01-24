@@ -25,12 +25,12 @@ class AForm
 		bool _isSigned;
 		const int _gradeSign;
 		const int _gradeExecute;
-
-	public:
 		AForm();
 		AForm(const AForm &);
-		AForm(const std::string, const int, const int);
 		AForm& operator=(const AForm &);
+
+	public:
+		AForm(const std::string, const int, const int);
 		virtual ~AForm();
 
 		const std::string getName() const;
@@ -38,7 +38,11 @@ class AForm
 		int getGradeSign() const;
 		int getGradeExecute() const;
 		
+		void setName(const std::string &);
+		void setGradeSign(int);
+		void setGradeExecute(int);
 		void setSigned(const bool);
+
 		void beSigned(const Bureaucrat &);
 		virtual void execute(const Bureaucrat &) const = 0;
 		class GradeTooHighException : public std::out_of_range
