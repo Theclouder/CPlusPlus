@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Serialize.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 18:30:41 by vduchi            #+#    #+#             */
-/*   Updated: 2024/01/25 10:42:48 by vduchi           ###   ########.fr       */
+/*   Created: 2024/01/25 10:36:34 by vduchi            #+#    #+#             */
+/*   Updated: 2024/01/25 10:41:52 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Colors.hpp"
-#include "ScalarConverter.hpp"
+#ifndef SERIALIZE_HPP
+# define SERIALIZE_HPP
 
-int main(int ac, char *ag[])
+#include <iostream>
+#include "Data.hpp"
+
+class Serialize
 {
-	if (ac == 2)
-	{
-		std::string input(ag[1]);
-		ScalarConverter::convert(input);
-	}
-	else
-		std::cout << ORANGE << "Only one argument allowed!" << RESET << std::endl;
-}
+	private:
+		Serialize();
+		Serialize(const Serialize &);
+		Serialize& operator=(const Serialize &);
+		~Serialize();
+
+	public:
+		static uintptr_t serialize(Data*);
+		static Data* deserialize(uintptr_t);
+};
+
+#endif
+

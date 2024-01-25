@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Serialize.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 18:30:41 by vduchi            #+#    #+#             */
-/*   Updated: 2024/01/25 10:42:48 by vduchi           ###   ########.fr       */
+/*   Created: 2024/01/25 10:42:20 by vduchi            #+#    #+#             */
+/*   Updated: 2024/01/25 10:59:45 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Colors.hpp"
-#include "ScalarConverter.hpp"
+#include "Serialize.hpp"
 
-int main(int ac, char *ag[])
+Serialize::Serialize() {}
+
+Serialize::Serialize(const Serialize & rhs)
 {
-	if (ac == 2)
-	{
-		std::string input(ag[1]);
-		ScalarConverter::convert(input);
-	}
-	else
-		std::cout << ORANGE << "Only one argument allowed!" << RESET << std::endl;
+	*this = rhs;
+}
+
+Serialize& Serialize::operator=(const Serialize & rhs) { (void)rhs; return *this; }
+
+Serialize::~Serialize() {}
+
+uintptr_t Serialize::serialize(Data* ptr)
+{
+	return reinterpret_cast<uintptr_t>(ptr);
+}
+
+Data* Serialize::deserialize(uintptr_t raw)
+{
+	return reinterpret_cast<Data*>(raw);
 }

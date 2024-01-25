@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Colors.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 18:30:41 by vduchi            #+#    #+#             */
-/*   Updated: 2024/01/25 10:42:48 by vduchi           ###   ########.fr       */
+/*   Created: 2024/01/23 11:01:35 by vduchi            #+#    #+#             */
+/*   Updated: 2024/01/23 11:02:13 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Colors.hpp"
-#include "ScalarConverter.hpp"
+#ifndef COLORS_HPP
+# define COLORS_HPP
 
-int main(int ac, char *ag[])
-{
-	if (ac == 2)
-	{
-		std::string input(ag[1]);
-		ScalarConverter::convert(input);
-	}
-	else
-		std::cout << ORANGE << "Only one argument allowed!" << RESET << std::endl;
-}
+// # Regular Colors
+# define RED "\033[0;31m"
+# define GREEN "\033[0;32m"
+# define YELLOW "\033[0;33m"
+# define BLUE "\x1B[38;2;47;82;191m"
+# define MAGENTA "\033[0;35m"
+# define CYAN "\033[0;36m"
+# define ORANGE "\033[1;31m"
+# define WHITE "\033[0;37m"
+# define BLACK "\x1B[30m"
+# define RESET "\x1B[0m"
+
+#endif

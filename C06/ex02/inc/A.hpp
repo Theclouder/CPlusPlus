@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   A.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 18:30:41 by vduchi            #+#    #+#             */
-/*   Updated: 2024/01/25 10:42:48 by vduchi           ###   ########.fr       */
+/*   Created: 2024/01/25 10:57:29 by vduchi            #+#    #+#             */
+/*   Updated: 2024/01/25 11:06:05 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Colors.hpp"
-#include "ScalarConverter.hpp"
+#ifndef A_HPP
+# define A_HPP
 
-int main(int ac, char *ag[])
+#include <iostream>
+#include "Base.hpp"
+
+class A : public Base
 {
-	if (ac == 2)
-	{
-		std::string input(ag[1]);
-		ScalarConverter::convert(input);
-	}
-	else
-		std::cout << ORANGE << "Only one argument allowed!" << RESET << std::endl;
-}
+	public:
+		~A();
+
+};
+
+#endif
+
