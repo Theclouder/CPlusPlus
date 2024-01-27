@@ -32,7 +32,7 @@ MID_GRAY		=	\033[38;5;245m
 DARK_GREEN		=	\033[38;2;75;179;82
 DARK_YELLOW		=	\033[38;5;143m
 
-NAME		=	Span
+NAME		=	btc
 
 SRCS_DIR	=	src
 INCS_DIR	=	inc
