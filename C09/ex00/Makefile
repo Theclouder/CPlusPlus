@@ -6,7 +6,7 @@
 #    By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 10:03:28 by vduchi            #+#    #+#              #
-#    Updated: 2024/01/26 19:11:15 by vduchi           ###   ########.fr        #
+#    Updated: 2024/01/28 12:42:18 by vduchi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,9 +39,9 @@ INCS_DIR	=	inc
 OBJS_DIR	=	.objs
 DEPS_DIR	=	.deps
 
-SRCS		=		src/main.cpp
-SRCS		+=		src/Span.cpp
-OBJS		=		$(patsubst $(SRCS_DIR)/%, $(OBJS_DIR)/%, $(SRCS:.cpp=.o))
+SRCS		=		main.cpp
+SRCS		+=		BitcoinExchange.cpp
+OBJS		=		$(SRCS:.cpp=.o)
 
 CPPFLAGS	+=	-Wall -Werror -Wextra -std=c++98 -pedantic-errors $(addprefix -I , $(INCS_DIR))
 CPPFLAGS	+=	-MMD -MP -MF $(DEPS_DIR)/$*.d
@@ -51,7 +51,7 @@ RM			=	rm -rf
 MKDIR		=	mkdir -p
 MAKE		=	make --no-print-directory
 
-$(OBJS_DIR)/%.o		:	$(SRCS_DIR)/%.cpp
+%.o		:	%.cpp
 	@$(CXX) $(CPPFLAGS) -c $< -o $@
 	@echo "$(YELLOW)$(patsubst $(SRCS_DIR)/%,%, $<)	\tcompiled!$(DEF_COLOR)"
 
