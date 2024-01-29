@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 14:43:03 by vduchi            #+#    #+#             */
-/*   Updated: 2024/01/29 14:54:06 by vduchi           ###   ########.fr       */
+/*   Updated: 2024/01/29 16:11:39 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ class PmergeMe
 		PmergeMe& operator=(const PmergeMe &);
 		~PmergeMe();
 
+		void addList(std::vector<int> &);
 };
 
 #endif
