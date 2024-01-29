@@ -6,7 +6,7 @@
 #    By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 10:03:28 by vduchi            #+#    #+#              #
-#    Updated: 2024/01/29 14:51:48 by vduchi           ###   ########.fr        #
+#    Updated: 2024/01/29 14:41:49 by vduchi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ MID_GRAY		=	\033[38;5;245m
 DARK_GREEN		=	\033[38;2;75;179;82
 DARK_YELLOW		=	\033[38;5;143m
 
-NAME		=	MutantStack
+NAME		=	PmergeMe
 
 SRCS_DIR	=	src
 INCS_DIR	=	inc
@@ -40,6 +40,7 @@ OBJS_DIR	=	.objs
 DEPS_DIR	=	.deps
 
 SRCS		=	main.cpp
+SRCS		+=	PmergeMe.cpp
 OBJS		=	$(SRCS:.cpp=.o)
 DEPS		=	$(SRCS:.cpp=.d)
 
@@ -68,7 +69,7 @@ directories:
 clean	:
 	@$(RM)	$(OBJS_DIR)
 	@$(RM)	$(DEPS_DIR)
-	@$(RM)	$(OBJS) $(DEPS)
+	@$(RM) $(OBJS)
 
 fclean	:	clean
 	@$(RM) $(NAME)

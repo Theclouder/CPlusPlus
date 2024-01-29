@@ -6,7 +6,7 @@
 #    By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 10:03:28 by vduchi            #+#    #+#              #
-#    Updated: 2024/01/29 12:24:51 by vduchi           ###   ########.fr        #
+#    Updated: 2024/01/29 14:52:38 by vduchi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,7 +68,7 @@ directories:
 clean	:
 	@$(RM)	$(OBJS_DIR)
 	@$(RM)	$(DEPS_DIR)
-	@$(RM) $(OBJS)
+	@$(RM)	$(OBJS) $(DEPS)
 
 fclean	:	clean
 	@$(RM) $(NAME)

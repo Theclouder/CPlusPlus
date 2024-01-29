@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 11:15:51 by vduchi            #+#    #+#             */
-/*   Updated: 2024/01/29 11:48:19 by vduchi           ###   ########.fr       */
+/*   Updated: 2024/01/29 14:49:22 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,41 @@ int checkInput(std::string input)
 	return 0;
 }
 
+void loop(RPN & rpn, std::string & digit)
+{
+	if (digit[0] >= '0' && digit[0] <= '9')
+		rpn.pushStack(std::atoi(digit.c_str()));
+	else
+	{
+		int one = rpn.popStack(), two = rpn.popStack(), res = 0;
+		switch (digit[0]) {
+			case 43:
+				{
+					res = two + one;
+					break;
+				}
+			case 45:
+				{
+					res = two - one;
+					break;
+				}
+			case 42:
+				{
+					res = two * one;
+					break;
+				}
+			case 47:
+				{
+					if (one == 0)
+						throw std::runtime_error("Attempted division by zero!");
+					res = two / one;
+					break;
+				}
+		}
+		rpn.pushStack(res);
+	}
+}
+
 int main(int argc, char *argv[])
 {
 	if (argc != 2)
@@ -53,39 +88,7 @@ int main(int argc, char *argv[])
 		std::string digit, str(argv[1]);
 		std::stringstream ss(str);
 		while (getline(ss, digit, ' '))
-		{
-			if (digit[0] >= '0' && digit[0] <= '9')
-				rpn.pushStack(std::atoi(digit.c_str()));
-			else
-			{
-				int one = rpn.popStack(), two = rpn.popStack(), res = 0;
-				switch (digit[0]) {
-					case 43:
-						{
-							res = two + one;
-							break;
-						}
-					case 45:
-						{
-							res = two - one;
-							break;
-						}
-					case 42:
-						{
-							res = two * one;
-							break;
-						}
-					case 47:
-						{
-							if (one == 0)
-								throw std::runtime_error("Attempted division by zero!");
-							res = two / one;
-							break;
-						}
-				}
-				rpn.pushStack(res);
-			}
-		}
+			loop(rpn, digit);
 		std::cout << rpn.popStack() << std::endl;
 	}
 	catch (std::exception & ex) { std::cout << RED << ex.what() << RESET << std::endl; }

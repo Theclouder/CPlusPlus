@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 11:15:51 by vduchi            #+#    #+#             */
-/*   Updated: 2024/01/29 09:31:38 by vduchi           ###   ########.fr       */
+/*   Updated: 2024/01/29 14:50:21 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int checkFile(char *str)
 	return 0;
 }
 
-void loop(BitcoinExchange bte, std::string & value, int *a)
+void loop(BitcoinExchange & bte, std::string & value, int *a)
 {
 	int check[3];
 	int aGood[3];
