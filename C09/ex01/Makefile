@@ -6,7 +6,7 @@
 #    By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 10:03:28 by vduchi            #+#    #+#              #
-#    Updated: 2024/01/28 12:42:18 by vduchi           ###   ########.fr        #
+#    Updated: 2024/01/29 11:28:40 by vduchi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ MID_GRAY		=	\033[38;5;245m
 DARK_GREEN		=	\033[38;2;75;179;82
 DARK_YELLOW		=	\033[38;5;143m
 
-NAME		=	btc
+NAME		=	RPN
 
 SRCS_DIR	=	src
 INCS_DIR	=	inc
@@ -40,7 +40,7 @@ OBJS_DIR	=	.objs
 DEPS_DIR	=	.deps
 
 SRCS		=		main.cpp
-SRCS		+=		BitcoinExchange.cpp
+SRCS		+=		RPN.cpp
 OBJS		=		$(SRCS:.cpp=.o)
 
 CPPFLAGS	+=	-Wall -Werror -Wextra -std=c++98 -pedantic-errors $(addprefix -I , $(INCS_DIR))
