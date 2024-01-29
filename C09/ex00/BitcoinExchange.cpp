@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 11:04:46 by vduchi            #+#    #+#             */
-/*   Updated: 2024/01/28 22:27:06 by vduchi           ###   ########.fr       */
+/*   Updated: 2024/01/29 09:33:16 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 BitcoinExchange::BitcoinExchange()
 {
-//	int i = 0;
 	std::ifstream in(".data.csv");
 	if (!in.good())
 		throw e_dnf;
@@ -29,15 +28,7 @@ BitcoinExchange::BitcoinExchange()
 		float val = atof(str);
 		this->setBtcPrice(date, val);
 		this->setBtcPrice(date, val);
-//		i++;
-//		if (i > 30)
-//			break;
 	}
-//	for (std::map<std::string, float>::iterator it = this->_btcPrice.begin(); it != this->_btcPrice.end(); it++)
-//	{
-//		std::cout << MAGENTA << std::fixed << std::setprecision(2) << "Key -> " << it->first;
-//		std::cout << " Value -> " << it->second << RESET << std::endl;
-//	}
 }
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange & rhs)
@@ -54,7 +45,7 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange & rhs)
 BitcoinExchange::~BitcoinExchange() {}
 
 
-float BitcoinExchange::getBtcPrice(std::string & ref) const
+float BitcoinExchange::getBtcPrice(const std::string & ref)
 {
 	return this->_btcPrice.at(ref);
 }

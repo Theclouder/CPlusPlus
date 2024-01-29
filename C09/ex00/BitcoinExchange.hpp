@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 10:48:05 by vduchi            #+#    #+#             */
-/*   Updated: 2024/01/28 22:05:38 by vduchi           ###   ########.fr       */
+/*   Updated: 2024/01/29 08:56:42 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ class BitcoinExchange
 
 		iter getEnd();
 		iter getBegin();
-		float getBtcPrice(std::string &) const;
+		float getBtcPrice(const std::string &);
 		void setBtcPrice(std::string &, float &);
 		class DataNotFoundException: public std::exception
 		{
