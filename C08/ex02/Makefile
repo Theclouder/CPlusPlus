@@ -6,7 +6,7 @@
 #    By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 10:03:28 by vduchi            #+#    #+#              #
-#    Updated: 2024/01/27 18:04:00 by vduchi           ###   ########.fr        #
+#    Updated: 2024/01/29 14:37:14 by vduchi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,8 +39,9 @@ INCS_DIR	=	inc
 OBJS_DIR	=	.objs
 DEPS_DIR	=	.deps
 
-SRCS		=		main.cpp
-OBJS		=		$(SRCS:.cpp=.o)
+SRCS		=	main.cpp
+OBJS		=	$(SRCS:.cpp=.o)
+DEPS		=	$(SRCS:.cpp=.d)
 
 CPPFLAGS	+=	-Wall -Werror -Wextra -std=c++98 -pedantic-errors $(addprefix -I , $(INCS_DIR))
 CPPFLAGS	+=	-MMD -MP -MF $(DEPS_DIR)/$*.d
@@ -76,3 +77,5 @@ fclean	:	clean
 re		:	fclean all
 
 .PHONY: all clean fclean re
+
+-include $(DEPS)
