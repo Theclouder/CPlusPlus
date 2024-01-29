@@ -6,7 +6,7 @@
 #    By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 10:03:28 by vduchi            #+#    #+#              #
-#    Updated: 2023/09/20 10:31:58 by vduchi           ###   ########.fr        #
+#    Updated: 2024/01/29 14:33:41 by vduchi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ NAME		=	jobOfMyDream
 SRCS		=	tests.cpp
 SRCS		+=	Account.cpp
 OBJS		=	$(SRCS:.cpp=.o)
+DEPS		=	$(SRCS:.cpp=.d)
 
 CPPFLAGS	+=	-Wall -Werror -Wextra -std=c++98 -pedantic-errors
 
@@ -64,3 +65,5 @@ fclean	:	clean
 re		:	fclean all
 
 .PHONY: all clean fclean re
+
+-include $(DEPS)

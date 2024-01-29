@@ -6,7 +6,7 @@
 #    By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 10:03:28 by vduchi            #+#    #+#              #
-#    Updated: 2023/09/20 10:30:23 by vduchi           ###   ########.fr        #
+#    Updated: 2024/01/29 14:33:22 by vduchi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,8 +41,9 @@ SRCS		=	src/main.cpp
 SRCS		+=	src/Contact.cpp
 SRCS		+=	src/PhoneBook.cpp
 OBJS		=	$(SRCS:.cpp=.o)
+DEPS		=	$(SRCS:.cpp=.d)
 
-CPPFLAGS	+=	-Wall -Werror -Wextra -std=c++98 -pedantic-errors $(addprefix -I , $(INCS_DIR))
+CPPFLAGS	+=	-Wall -Werror -Wextra -std=c++98 -pedantic-errors -MMD $(addprefix -I , $(INCS_DIR))
 
 CXX		=	c++
 RM			=	rm -rf
@@ -68,3 +69,5 @@ fclean	:	clean
 re		:	fclean all
 
 .PHONY: all clean fclean re
+
+-include $(DEPS)
