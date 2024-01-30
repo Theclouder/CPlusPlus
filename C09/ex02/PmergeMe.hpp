@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 14:43:03 by vduchi            #+#    #+#             */
-/*   Updated: 2024/01/29 16:11:39 by vduchi           ###   ########.fr       */
+/*   Updated: 2024/01/30 09:56:17 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,16 @@
 
 #include <list>
 #include <vector>
+#include <iomanip>
 #include <iostream>
+#include <sys/time.h>
 
 class PmergeMe
 {
 	private:
 		std::list<int> _l;
 		std::vector<int> _v;
+		struct timeval _beginL, _endL, _beginV, _endV;
 
 	public:
 		PmergeMe();
@@ -40,7 +43,15 @@ class PmergeMe
 		PmergeMe& operator=(const PmergeMe &);
 		~PmergeMe();
 
-		void addList(std::vector<int> &);
+		void printET(char **);
+		int getListEl(std::list<int> &, int);
+		void setListEl(std::list<int> &, int, int);
+		void startListAlgorithm(char *argv[]);
+		void startVectorAlgorithm(char *argv[]);
+		void vecMerge(std::vector<int> &, int, int, int);
+		void vecMergeSort(std::vector<int> &, int, int);
+		void listMerge(std::list<int> &, int, int, int);
+		void listMergeSort(std::list<int> &, int, int);
 };
 
 #endif
