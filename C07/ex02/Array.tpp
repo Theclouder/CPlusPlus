@@ -11,7 +11,7 @@ Array<T>::Array()
 template<class T>
 Array<T>::Array(unsigned int n)
 {
-	this->_size = n - 1;
+	this->_size = n;
 	this->_arr = new T[n];
 	for (unsigned int i = 0; i < n; i++)
 		this->_arr[i] = '\0';
@@ -54,7 +54,7 @@ const char *Array<T>::outOfBoundsException::what() const throw() { return RED "I
 template<class T>
 T& Array<T>::operator[](unsigned int i)
 {
-	if (i > this->_size)
+	if (i >= this->_size)
 		throw Array<T>::outOfBoundsException();
 	return this->_arr[i];
 }
