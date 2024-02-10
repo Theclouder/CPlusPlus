@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 18:50:39 by vduchi            #+#    #+#             */
-/*   Updated: 2024/01/27 17:43:46 by vduchi           ###   ########.fr       */
+/*   Updated: 2024/02/10 17:47:22 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,17 +82,17 @@ unsigned int Span::longestSpan()
 	span = *it1 > *it2 ? *it1 - *it2 : *it2 - *it1;
 	while (it2 != this->_list.end())
 	{
-		it1 = it2;
-		++it2;
-		if ((*it1 > *it2 && span < *it1 - *it2) || (*it2 > *it1 && span < *it2 - *it1))
+		it2 = this->_list.begin();
+		while (it2 != this->_list.end())
 		{
-			if (*it1 > *it2)
+			if (it1 != it2 && *it1 > *it2 && *it1 - *it2 > span)
 				span = *it1 - *it2;
-			else
+			else if (it1 != it2 && *it2 > *it1 && *it2 - *it1 > span)
 				span = *it2 - *it1;
+			++it2;
 		}
+		++it1;
 	}
-	return span;
 	return span;
 }
 
