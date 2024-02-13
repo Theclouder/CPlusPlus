@@ -41,18 +41,18 @@ DEPS_DIR	=	.deps
 
 SRCS		=		main.cpp
 SRCS		+=		RPN.cpp
-OBJS		=		$(SRCS:.cpp=.o)
-DEPS		=		$(SRCS:.cpp=.d)
+OBJS		=	$(patsubst %, $(OBJS_DIR)/%, $(SRCS:.cpp=.o))
+DEPS		=	$(patsubst %, $(DEPS_DIR)/%, $(SRCS:.cpp=.d))
 
 CPPFLAGS	+=	-Wall -Werror -Wextra -std=c++98 -pedantic-errors $(addprefix -I , $(INCS_DIR))
-CPPFLAGS	+=	-MMD -MP -MF $*.d
+CPPFLAGS	+=	-MMD -MP -MF $(DEPS_DIR)/$*.d
 
 CXX			=	c++
 RM			=	rm -rf
 MKDIR		=	mkdir -p
 MAKE		=	make --no-print-directory
 
-%.o		:	%.cpp
+$(OBJS_DIR)/%.o		:	%.cpp
 	@$(CXX) $(CPPFLAGS) -c $< -o $@
 	@echo "$(YELLOW)$(patsubst $(SRCS_DIR)/%,%, $<)	\tcompiled!$(DEF_COLOR)"
 

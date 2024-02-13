@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 11:15:51 by vduchi            #+#    #+#             */
-/*   Updated: 2024/01/29 14:50:21 by vduchi           ###   ########.fr       */
+/*   Updated: 2024/02/13 18:49:36 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ int checkValue(std::string & value)
 		for (size_t i = 0; i < value.length(); i++)
 			if (!isdigit(value[i]) && i != point)
 				throw std::invalid_argument("not a number!");
+		const char *str = value.c_str();
+		if (atof(str) > 1000)
+			throw std::invalid_argument("the number is too large!");
 	}
 	catch (std::exception & ex) { std::cout << RED << "Error => " << ex.what() << RESET << std::endl; return 1;}
 	return 0;
@@ -81,7 +84,10 @@ int checkDate(std::string & date)
 		if (a[1] > 12 || (a[2] > 31 && (a[1] == 1 || a[1] == 3 || a[1] == 5 || a[1] == 7
 				|| a[1] == 10 || a[1] == 12)) || (a[2] > 30 && (a[1] == 4 || a[1] == 6
 				|| a[1] == 9 || a[1] == 11)) || (a[2] > 28 && a[1] == 2))
-				throw std::invalid_argument("date overflow!");
+			throw std::invalid_argument("date overflow!");
+		if (a[0] < 2009)
+			throw std::invalid_argument("date before 2009!");
+
 	}
 	catch (std::exception & ex) { std::cout << RED << "Error => " << ex.what() << RESET << std::endl; return 1;}
 	return 0;
@@ -111,17 +117,24 @@ void loop(BitcoinExchange & bte, std::string & value, int *a)
 	for (; it != bte.getEnd(); it++)
 	{
 		getIntDate(it->first, check);
-		if (std::abs(check[0] - a[0]) < std::abs(aGood[0] - a[0])
-			|| std::abs(check[1] - a[1]) < std::abs(aGood[1] - a[1])
-			|| (std::abs(check[1] - a[1]) <= std::abs(aGood[1] - a[1])
-			&& std::abs(check[2] - a[2]) < std::abs(aGood[2] - a[2])
-			&& check[2] - a[2] > aGood[2] - a[2] && check[2] - a[2] <= 0))
+		int yearCheck = check[0] - a[0];
+		int yearGood = aGood[0] - a[0];
+		int monthCheck = check[1] - a[1];
+		int monthGood = aGood[1] - a[1];
+		int dayCheck = check[2] - a[2];
+		int dayGood = aGood[2] - a[2];
+		if (((yearCheck > 0 && yearCheck < yearGood) || (yearCheck <= 0 && yearCheck > yearGood))
+			|| (yearGood == 0 && yearCheck == 0 && ((monthCheck > 0 && monthCheck < monthGood)
+				|| (monthCheck <= 0 && monthCheck > monthGood)))
+			|| (yearGood == 0 && yearCheck == 0 && monthGood == 0 && monthCheck == 0
+				&& ((dayCheck > 0 && dayCheck < dayGood) || (dayCheck <= 0 && dayCheck > dayGood))))
 		{
 			good = it;
 			getIntDate(good->first, aGood);
 		}
 	}
-	std::cout << aGood[0] << "-" << aGood[1] << "-" << aGood[2];
+	std::cout << a[0] << "-" << a[1] << "-" << a[2] << " ";
+//	std::cout << aGood[0] << "-" << aGood[1] << "-" << aGood[2];
 	float out = getValue(value) * bte.getBtcPrice(good->first);
 	std::cout << std::fixed << std::setprecision(2) << " => " << getValue(value) << " = " << out;
 	std::cout << RESET << std::endl;
