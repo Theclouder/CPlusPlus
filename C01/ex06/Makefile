@@ -6,7 +6,7 @@
 #    By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 10:03:28 by vduchi            #+#    #+#              #
-#    Updated: 2024/01/29 14:27:44 by vduchi           ###   ########.fr        #
+#    Updated: 2024/02/22 23:38:47 by vduchi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ DEPS		=	$(patsubst $(SRCS_DIR)/%, $(OBJS_DIR)/%, $(SRCS:.cpp=.d))
 CPPFLAGS	+=	-Wall -Werror -Wextra -std=c++98 -pedantic-errors $(addprefix -I , $(INCS_DIR))
 CPPFLAGS	+=	-MMD -MP -MF $(DEPS_DIR)/$*.d
 
-CXX		=	c++
+CXX			=	c++
 RM			=	rm -rf
 MKDIR		=	mkdir -p
 MAKE		=	make --no-print-directory
@@ -59,7 +59,7 @@ $(OBJS_DIR)/%.o		:	$(SRCS_DIR)/%.cpp
 all		:	directories $(NAME)
 
 $(NAME)	:	$(OBJS)
-	@$(CXX) $^ -o $@
+	@$(CXX) $(CPPFLAGS) $^ -o $@
 	@echo "$(GREEN)Executable $@ compiled!$(DEF_COLOR)"
 
 directories:

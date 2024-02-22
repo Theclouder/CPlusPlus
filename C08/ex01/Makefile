@@ -6,7 +6,7 @@
 #    By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 10:03:28 by vduchi            #+#    #+#              #
-#    Updated: 2024/01/29 14:51:27 by vduchi           ###   ########.fr        #
+#    Updated: 2024/02/22 23:50:26 by vduchi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ $(OBJS_DIR)/%.o		:	$(SRCS_DIR)/%.cpp
 all		:	directories $(NAME)
 
 $(NAME)	:	$(OBJS)
-	@$(CXX) $^ -o $@
+	@$(CXX) $(CPPFLAGS) $^ -o $@
 	@echo "$(GREEN)Executable $@ compiled!$(DEF_COLOR)"
 
 directories:

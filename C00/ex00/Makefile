@@ -6,7 +6,7 @@
 #    By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/28 10:03:28 by vduchi            #+#    #+#              #
-#    Updated: 2024/01/29 14:28:19 by vduchi           ###   ########.fr        #
+#    Updated: 2024/02/22 23:40:12 by vduchi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ DEPS		=	$(SRCS:.cpp=.d)
 
 CPPFLAGS	+=	-Wall -Werror -Wextra -std=c++98 -pedantic-errors -MMD
 
-CXX		=	c++
+CXX			=	c++
 RM			=	rm -rf
 MAKE		=	make --no-print-directory
 
@@ -51,7 +51,7 @@ MAKE		=	make --no-print-directory
 all		:	$(NAME)
 
 $(NAME)	:	$(OBJS)
-	@$(CXX) $^ -o $@
+	@$(CXX) $(CPPFLAGS) $^ -o $@
 	@echo "$(GREEN)Executable $@ compiled!$(DEF_COLOR)"
 
 clean	:
