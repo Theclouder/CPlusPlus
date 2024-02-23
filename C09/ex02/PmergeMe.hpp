@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 14:43:03 by vduchi            #+#    #+#             */
-/*   Updated: 2024/01/30 09:56:17 by vduchi           ###   ########.fr       */
+/*   Updated: 2024/02/23 13:50:53 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,15 @@
 #include <vector>
 #include <iomanip>
 #include <iostream>
-#include <sys/time.h>
+#include <ctime>
+#include <cstdlib>
 
 class PmergeMe
 {
 	private:
 		std::list<int> _l;
 		std::vector<int> _v;
-		struct timeval _beginL, _endL, _beginV, _endV;
+		clock_t _beginL, _endL, _beginV, _endV;
 
 	public:
 		PmergeMe();

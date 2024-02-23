@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 11:15:51 by vduchi            #+#    #+#             */
-/*   Updated: 2024/01/29 14:49:22 by vduchi           ###   ########.fr       */
+/*   Updated: 2024/02/23 13:41:19 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int checkInput(std::string input)
 		int num = 0, op = 0;
 		std::string digit;
 		std::stringstream ss(input);
-		while (getline(ss, digit, ' '))
+		while (ss >> digit)
 		{
 			for (size_t i = 0; i < digit.length(); i++)
 				if (!isdigit(digit[i]) && digit[i] != '/' && digit[i] != '*' && digit[i] != '-' && digit[i] != '+')
@@ -29,6 +29,8 @@ int checkInput(std::string input)
 				num++;
 			else
 				op++;
+			if (num == 1 && op == 1)
+				throw std::invalid_argument("argument is not a valid reversed polish notation!");
 		}
 		if (op != num - 1)
 			throw std::invalid_argument("number of operators not correct!");
@@ -87,7 +89,7 @@ int main(int argc, char *argv[])
 		RPN rpn;
 		std::string digit, str(argv[1]);
 		std::stringstream ss(str);
-		while (getline(ss, digit, ' '))
+		while (ss >> digit)
 			loop(rpn, digit);
 		std::cout << rpn.popStack() << std::endl;
 	}

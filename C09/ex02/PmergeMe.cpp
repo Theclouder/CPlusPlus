@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 14:46:27 by vduchi            #+#    #+#             */
-/*   Updated: 2024/01/30 10:07:38 by vduchi           ###   ########.fr       */
+/*   Updated: 2024/02/23 13:51:49 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,20 +124,24 @@ void PmergeMe::vecMergeSort(std::vector<int> & v, int low, int high)
 
 void PmergeMe::startListAlgorithm(char *argv[])
 {
-	gettimeofday(&this->_beginL, 0);
+//	gettimeofday(&this->_beginL, 0);
+	this->_beginL = clock();
 	for (int i = 1; argv[i] != NULL; i++)
 		this->_l.push_back(atoi(argv[i]));
 	this->listMergeSort(this->_l, 0, this->_l.size() - 1);
-	gettimeofday(&this->_endL, 0);
+	this->_endL = clock();
+//	gettimeofday(&this->_endL, 0);
 }
 
 void PmergeMe::startVectorAlgorithm(char *argv[])
 {
-	gettimeofday(&this->_beginV, 0);
+//	gettimeofday(&this->_beginV, 0);
+	this->_beginV = clock();
 	for (int i = 1; argv[i] != NULL; i++)
 		this->_v.push_back(atoi(argv[i]));
 	this->vecMergeSort(this->_v, 0, this->_v.size() - 1);
-	gettimeofday(&this->_endV, 0);
+	this->_endV = clock();
+//	gettimeofday(&this->_endV, 0);
 }
 
 void PmergeMe::printET(char *argv[])
@@ -159,8 +163,8 @@ void PmergeMe::printET(char *argv[])
 			std::cout << " ";
 	}
 	std::cout << std::endl;
-	double lTime = (this->_endL.tv_usec - this->_beginL.tv_usec) / 1000000.00;
-	double vTime = (this->_endV.tv_usec - this->_beginV.tv_usec) / 1000000.00;
+	double lTime = (double)(this->_endL - this->_beginL) / CLOCKS_PER_SEC;
+	double vTime = (double)(this->_endV - this->_beginV) / CLOCKS_PER_SEC;
 	std::cout << "Time to process a range of " << this->_l.size() << " elements with std::list   : ";
 	std::cout << std::fixed << std::setprecision(6) << lTime << " s" << std::endl;
 	std::cout << "Time to process a range of " << this->_v.size() << " elements with std::vector : ";
