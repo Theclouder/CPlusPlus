@@ -6,7 +6,7 @@
 /*   By: vduchi <vduchi@student.42barcelona.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 11:15:51 by vduchi            #+#    #+#             */
-/*   Updated: 2024/02/13 18:49:36 by vduchi           ###   ########.fr       */
+/*   Updated: 2024/03/25 18:51:45 by vduchi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ int checkDate(std::string & date)
 			if (!isdigit(date[l]))
 				throw std::invalid_argument("not a date!");
 		getIntDate(date, a);
+		if (a[1] == 0 || a[2] == 0)
+			throw std::invalid_argument("month or day is at zero!");
 		if (a[1] > 12 || (a[2] > 31 && (a[1] == 1 || a[1] == 3 || a[1] == 5 || a[1] == 7
 				|| a[1] == 10 || a[1] == 12)) || (a[2] > 30 && (a[1] == 4 || a[1] == 6
 				|| a[1] == 9 || a[1] == 11)) || (a[2] > 28 && a[1] == 2))
